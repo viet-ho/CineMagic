@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import ReviewsPage from "./components/ReviewsPage";
+import SeatBookingPage from "./components/SeatBookingPage";
+import PaymentPage from "./components/PaymentPage";
+import TicketBookingPage from "./components/TicketBookingPage";
+import ConfirmationPage from "./components/ConfirmationPage";
+import CreditCardPage from "./components/CreditCardPage";
+import PromoCodePage from "./components/PromoCodePage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  //return <ReviewsPage></ReviewsPage>;
+  return <SeatBookingPage></SeatBookingPage>;
+  //return <PaymentPage></PaymentPage>;
+  //return <TicketBookingPage></TicketBookingPage>;
+  //return <ConfirmationPage></ConfirmationPage>;
+  //return <CreditCardPage></CreditCardPage>;
+  //return <PromoCodePage></PromoCodePage>;
+
 }
 
 export default App;

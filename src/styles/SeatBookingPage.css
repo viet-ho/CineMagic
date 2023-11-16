@@ -1,0 +1,87 @@
+.seatButton {
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 1.2em;
+}
+
+.starBadge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background-color: red;
+    border-radius: 50%;
+    padding: 0.1em 0.3em;
+    color: white;
+    font-size: 60%;
+}
+
+.seatBookingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.screenText {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.selectSeatText {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.seatContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.confirmButton .btn {
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.confirmButton .btn:hover {
+    background-color: #ff8c00;
+}
+
+.backButton .btn {
+    background-color: #808080;
+    border: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.backButton .btn:hover {
+    background-color: #C0C0C0;
+}
+
+.noteSection {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+.availableSeat,
+.unavailableSeat,
+.accessibilitySeat {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.availableSeat .btn,
+.unavailableSeat .btn,
+.accessibilitySeat .btn {
+    pointer-events: none;
+}

@@ -1,0 +1,63 @@
+.reviews-page .checked {
+  color: orange;
+}
+
+.reviews-page .rating {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.reviews-page .card {
+  margin-bottom: 20px;
+}
+
+.reviews-page .overall-rating {
+  margin-bottom: 30px;
+}
+
+.reviews-page .see-more-button {
+  background-color: #ff5722;
+  border: none;
+}
+
+.reviews-page .see-more-button:hover {
+  background-color: #ff8c00;
+}
+
+.reviews-page .back-button {
+  background-color: #808080;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.reviews-page .back-button:hover {
+  background-color: #C0C0C0;
+}
+
+.reviews-page .overall-rating {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.reviews-page .rating-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-rating {
+  margin-left: 10px; 
+}
+
+
+

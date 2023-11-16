@@ -1,0 +1,91 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #ff5722;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    margin: 0 5px;
+    background-color: #808080;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #C0C0C0;
+    border-color: #C0C0C0;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-confirm {
+    background-color: #ff5722;
+    border: none;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.btn-back {
+    background-color: #808080;
+    border: none;
+    color: white;
+}
+
+.btn-back:hover {
+    background-color: #C0C0C0;
+    color: white;
+}
+
+.ticket-action-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 10px;        
+}
+
+.btn-confirm,
+.btn-back {
+    margin: 10px 0;
+    width: 200px;
+}
+
+.subtotal-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
