@@ -10,6 +10,10 @@ const PaymentPage = () => {
     const [discount, setDiscount] = useState(0);
     const [promoError, setPromoError] = useState('');
     const [showModal, setShowModal] = useState(false);
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
+    const [inputError, setInputError] = useState('');
 
     const subtotal = 22.00;
     const cleaningFee = 2.50;
@@ -44,32 +48,62 @@ const PaymentPage = () => {
 
     const total = subtotal - discount + tax + cleaningFee;
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+
+    const handlePhoneNumberChange = (event) => {
+        setPhoneNumber(event.target.value);
+    };
+
+    const selectPaymentMethod = (method) => {
+        setSelectedPaymentMethod(method);
+    };
+
+    const handleNextClick = () => {
+        if (!emailRegex.test(email)) {
+            setInputError('Please enter a valid email.');
+            setShowModal(true);
+        } else if (!phoneRegex.test(phoneNumber)) {
+            setInputError('Please enter a valid phone number in the format 123-456-7890.');
+            setShowModal(true);
+        } else if (!selectedPaymentMethod) {
+            setInputError('Please select a payment method.');
+            setShowModal(true);
+        } else {
+            setInputError('');
+            setShowModal(false);
+        }
+    };
+
     return (
         <div className="container">
             <Modal
                 showModal={showModal}
                 toggleModal={toggleModal}
-                message={promoError}
+                message={inputError || promoError}
             />
             <h2 className="text-center payment-header">Payment and Contact</h2>
 
             <div className="row">
                 <div className="col-md-6 input-section">
                     <label>Phone number:</label>
-                    <input type="text" className="form-control mb-3" placeholder="e.g. 123-456-7890" />
+                    <input type="text" className="form-control mb-3" placeholder="e.g. 123-456-7890" value={phoneNumber} onChange={handlePhoneNumberChange} />
 
                     <label>E-mail:</label>
-                    <input type="email" className="form-control mb-3" placeholder="example@example.com" />
+                    <input type="email" className="form-control mb-3" placeholder="example@example.com" value={email} onChange={handleEmailChange} />
                 </div>
 
                 <div className="col-md-6 input-section">
                     <label>Payment Method:</label>
                     <div className="payment-methods mb-3">
-                        <button className="btn btn-primary">Credit Card</button>
-                        <button className="btn btn-primary">Apple Pay</button>
-                        <button className="btn btn-primary">Google Pay</button>
+                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Credit Card')}>Credit Card</button>
+                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Apple Pay')}>Apple Pay</button>
+                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Google Pay')}>Google Pay</button>
                     </div>
-
                     <label>Promo Code:</label>
                     <div className="promo-code-group mb-3">
                         <input
@@ -102,7 +136,7 @@ const PaymentPage = () => {
             </div>
 
             <div className="text-center actions">
-                <button className="btn complete-order-btn">Next</button>
+                <button className="btn complete-order-btn" onClick={handleNextClick}>Next</button>
                 <br />
                 <button className="btn backButton">Back</button>
             </div>
