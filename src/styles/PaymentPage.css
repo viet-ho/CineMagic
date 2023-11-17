@@ -104,3 +104,9 @@
 .input-section label {
     font-weight: 500;
 }
+
+.payment-methods .btn.button-grey {
+    background-color: #808080;
+    color: white;
+    border: none;
+}

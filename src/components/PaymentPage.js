@@ -63,6 +63,10 @@ const PaymentPage = () => {
         setSelectedPaymentMethod(method);
     };
 
+    const getButtonClass = (method) => {
+        return `btn ${selectedPaymentMethod === method ? 'button-grey' : 'btn-primary'}`;
+    };
+
     const handleNextClick = () => {
         if (!emailRegex.test(email)) {
             setInputError('Please enter a valid email.');
@@ -100,9 +104,24 @@ const PaymentPage = () => {
                 <div className="col-md-6 input-section">
                     <label>Payment Method:</label>
                     <div className="payment-methods mb-3">
-                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Credit Card')}>Credit Card</button>
-                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Apple Pay')}>Apple Pay</button>
-                        <button className="btn btn-primary" onClick={() => selectPaymentMethod('Google Pay')}>Google Pay</button>
+                        <button
+                            className={getButtonClass('Credit Card')}
+                            onClick={() => selectPaymentMethod('Credit Card')}
+                        >
+                            Credit Card
+                        </button>
+                        <button
+                            className={getButtonClass('Apple Pay')}
+                            onClick={() => selectPaymentMethod('Apple Pay')}
+                        >
+                            Apple Pay
+                        </button>
+                        <button
+                            className={getButtonClass('Google Pay')}
+                            onClick={() => selectPaymentMethod('Google Pay')}
+                        >
+                            Google Pay
+                        </button>
                     </div>
                     <label>Promo Code:</label>
                     <div className="promo-code-group mb-3">
