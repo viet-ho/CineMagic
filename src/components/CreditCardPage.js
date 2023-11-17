@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../styles/CreditCardPage.css";
 
 const CreditCardPage = () => {
     const [cardDetails, setCardDetails] = useState({
@@ -28,9 +29,9 @@ const CreditCardPage = () => {
                         <h2 className="text-center mb-4">Credit Card Information</h2>
                         <div className="form-group mb-3">
                             <label><strong>Credit Card Number:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cardNumber"
                                 value={cardDetails.cardNumber}
                                 onChange={handleChange}
@@ -40,9 +41,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>Name On Card:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cardName"
                                 value={cardDetails.cardName}
                                 onChange={handleChange}
@@ -51,9 +52,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>Expiry:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="expiry"
                                 value={cardDetails.expiry}
                                 onChange={handleChange}
@@ -63,9 +64,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>CVV:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cvv"
                                 value={cardDetails.cvv}
                                 onChange={handleChange}
@@ -75,9 +76,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>Postal Code:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="postalCode"
                                 value={cardDetails.postalCode}
                                 onChange={handleChange}
@@ -86,10 +87,10 @@ const CreditCardPage = () => {
                             />
                         </div>
                         <div className="text-center mb-2">
-                            <button type="submit" className="btn" style={{backgroundColor: '#ff5722', color: 'white'}}>Confirm Card</button>
+                            <button className="btn confirm-button">Confirm Card</button>
                         </div>
                         <div className="text-center">
-                            <button type="button" className="btn btn-secondary" style={{backgroundColor: '#808080', color: 'white'}} onClick={() => { /* Handle the back button logic here */ }}>Back</button>
+                            <button className="btn btn-secondary back-button" onClick={() => { /* Handle the back button logic here */ }}>Back</button>
                         </div>
                     </form>
                 </div>
