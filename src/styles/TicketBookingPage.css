@@ -89,3 +89,8 @@ h2 {
     font-weight: bold;
     font-size: 1.2em;
 }
+
+.label-text {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}

@@ -7,7 +7,7 @@ function TicketBookingPage() {
     const [adultCount, setAdultCount] = useState(0);
     const [childCount, setChildCount] = useState(0);
     const [seniorCount, setSeniorCount] = useState(0);
-    const [wheelchairCount, setWheelchairCount] = useState('');
+    //const [wheelchairCount, setWheelchairCount] = useState('');
     const [specialAssistance, setSpecialAssistance] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -65,6 +65,7 @@ function TicketBookingPage() {
                 </div>
             </div>
 
+            {/*
             <div className="mb-3">
                 <label>How many wheelchair seats will be required, if any?:</label>
                 <input
@@ -87,9 +88,10 @@ function TicketBookingPage() {
                     max="40"
                 />
             </div>
+                */}
 
             <div className="mb-3">
-                <label>Special Assistance:</label>
+                <label className="label-text">Special Assistance:</label>
                 <textarea
                     className="form-control"
                     rows="3"
