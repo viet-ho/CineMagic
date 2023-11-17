@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/CreditCardPage.css";
+import Modal from "../components/Modal.js";
 
 const CreditCardPage = () => {
     const [cardDetails, setCardDetails] = useState({
@@ -11,6 +12,9 @@ const CreditCardPage = () => {
         postalCode: ''
     });
 
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCardDetails(prevDetails => ({ ...prevDetails, [name]: value }));
@@ -18,7 +22,33 @@ const CreditCardPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(cardDetails);
+    
+        const cardNumberRegex = /^\d{16}$/;
+        const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+        const cvvRegex = /^\d{3}$/;
+        const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+    
+        // Validation checks
+        if (!cardNumberRegex.test(cardDetails.cardNumber)) {
+            setModalMessage("Please enter a valid 16-digit credit card number.");
+        } else if (!cardDetails.cardName.trim()) {
+            setModalMessage("Please enter the name on the card.");
+        } else if (!expiryRegex.test(cardDetails.expiry)) {
+            setModalMessage("Please enter a valid expiry date in MM/YY format.");
+        } else if (!cvvRegex.test(cardDetails.cvv)) {
+            setModalMessage("Please enter a valid 3-digit CVV.");
+        } else if (!postalCodeRegex.test(cardDetails.postalCode)) {
+            setModalMessage("Please enter a valid postal code (for example: T2N 1N4).");
+        } else {
+            console.log(cardDetails);
+            return;
+        }
+    
+        setShowModal(true);
+    }
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
     }
 
     return (
@@ -95,6 +125,7 @@ const CreditCardPage = () => {
                     </form>
                 </div>
             </div>
+            <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
         </div>
     );
 }
