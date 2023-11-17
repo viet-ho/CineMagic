@@ -6,7 +6,8 @@ const CreditCardPage = () => {
         cardNumber: '',
         cardName: '',
         expiry: '',
-        cvv: ''
+        cvv: '',
+        postalCode: ''
     });
 
     const handleChange = (e) => {
@@ -17,7 +18,6 @@ const CreditCardPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(cardDetails);
-        // Here you can handle the submission of the form to your backend
     }
 
     return (
@@ -71,6 +71,18 @@ const CreditCardPage = () => {
                                 onChange={handleChange}
                                 placeholder="Enter CVV (3 numbers)"
                                 maxLength={3}
+                            />
+                        </div>
+                        <div className="form-group mb-3">
+                            <label><strong>Postal Code:</strong></label>
+                            <input 
+                                type="text" 
+                                className="form-control" 
+                                name="postalCode"
+                                value={cardDetails.postalCode}
+                                onChange={handleChange}
+                                placeholder="Enter postal code (T2N 1N4)"
+                                maxLength={7}
                             />
                         </div>
                         <div className="text-center mb-2">

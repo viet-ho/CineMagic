@@ -6,16 +6,14 @@ import PaymentPage from "./components/PaymentPage";
 import TicketBookingPage from "./components/TicketBookingPage";
 import ConfirmationPage from "./components/ConfirmationPage";
 import CreditCardPage from "./components/CreditCardPage";
-import PromoCodePage from "./components/PromoCodePage";
 
 function App() {
   //return <ReviewsPage></ReviewsPage>;
-  return <SeatBookingPage></SeatBookingPage>;
-  //return <PaymentPage></PaymentPage>;
+  //return <SeatBookingPage></SeatBookingPage>;
+  return <PaymentPage></PaymentPage>;
   //return <TicketBookingPage></TicketBookingPage>;
   //return <ConfirmationPage></ConfirmationPage>;
   //return <CreditCardPage></CreditCardPage>;
-  //return <PromoCodePage></PromoCodePage>;
 
 }
 
