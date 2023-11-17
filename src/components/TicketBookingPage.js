@@ -54,8 +54,20 @@ function TicketBookingPage() {
                     type="number"
                     className="form-control"
                     value={wheelchairCount}
-                    onChange={(e) => setWheelchairCount(e.target.value)}
-                    placeholder="1, 2, or more"
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '') {
+                            setWheelchairCount(value);
+                        } else {
+                            const newValue = parseInt(value, 10);
+                            if (newValue >= 0 && newValue <= 40) {
+                                setWheelchairCount(newValue);
+                            }
+                        }
+                    }}
+                    placeholder="0, 1, 2, or more (up to 40)"
+                    min="0"
+                    max="40"
                 />
             </div>
 
