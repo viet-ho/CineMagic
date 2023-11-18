@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 import "../styles/CreditCardPage.css";
 import Modal from "../components/Modal.js";
 
@@ -22,12 +23,12 @@ const CreditCardPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+
         const cardNumberRegex = /^\d{16}$/;
         const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
         const cvvRegex = /^\d{3}$/;
         const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
-    
+
         // Validation checks
         if (!cardNumberRegex.test(cardDetails.cardNumber)) {
             setModalMessage("Please enter a valid 16-digit credit card number.");
@@ -43,7 +44,7 @@ const CreditCardPage = () => {
             console.log(cardDetails);
             return;
         }
-    
+
         setShowModal(true);
     }
 
@@ -51,10 +52,19 @@ const CreditCardPage = () => {
         setShowModal(!showModal);
     }
 
+    useEffect(() => {
+        document.body.classList.add('payment-page-background');
+
+        return () => {
+            document.body.classList.remove('payment-page-background');
+        };
+    }, []);
+
     return (
-        <div className="container mt-5">
-            <div className="row justify-content-center">
-                <div className="col-md-6">
+        <div className="credit-page">
+            <div className="container mt-5 credit-card-container">
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
                         <h2 className="text-center mb-4">Credit Card Information</h2>
                         <div className="form-group mb-3">
                             <label><strong>Credit Card Number:</strong></label>
@@ -115,15 +125,18 @@ const CreditCardPage = () => {
                                 maxLength={7}
                             />
                         </div>
-                        <div className="text-center mb-2">
-                            <button className="btn confirm-button" onClick={handleSubmit}>Confirm Card</button>
+                        <div className="text-center credit-actions">
+                            <Button variant="primary" className="credit-confirm-button" onClick={handleSubmit}>
+                                Confirm Card
+                            </Button>
+                            <Button variant="secondary" className="credit-back-button">
+                                Back
+                            </Button>
                         </div>
-                        <div className="text-center">
-                            <button className="btn btn-secondary back-button" onClick={() => { /* Handle the back button logic here */ }}>Back</button>
-                        </div>
+                    </div>
                 </div>
+                <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
             </div>
-            <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
         </div>
     );
 }
