@@ -116,6 +116,13 @@ body {
   font-weight: 600;
 }
 
+.reviews-page .movie-poster {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin: 0 auto 20px;
+}
+
 @media (max-width: 768px) {
   .reviews-page .review-card {
     padding: 15px;

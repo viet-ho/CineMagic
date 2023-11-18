@@ -61,6 +61,8 @@ const ReviewsPage = () => {
     // ... Add more reviews as needed
   ];
 
+  const numberOfReviews = reviews.length;
+
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -75,10 +77,13 @@ const ReviewsPage = () => {
     setVisibleReviews(prevVisibleReviews => prevVisibleReviews + 4);
   };
 
+  const moviePosterUrl = "https://www.themoviedb.org/t/p/original/76Py7yDbVne7LGAeYIiNi5oQEOV.jpg";
+
   return (
     <div className="container mt-5 reviews-page">
       <div className="overall-rating">
         <h2>Movie 2</h2>
+        <img src={moviePosterUrl} alt="Movie Poster" className="movie-poster" />
         <div className="rating-and-number-wrapper">
           <div className="rating-wrapper">
             <Rating rating={averageRating} />
@@ -88,7 +93,7 @@ const ReviewsPage = () => {
           </div>
         </div>
       </div>
-      <h3>User Reviews</h3>
+      <h3>User Reviews ({numberOfReviews})</h3>
       {reviews.slice(0, visibleReviews).map(review => (
         <Review key={review.id} review={review} />
       ))}
