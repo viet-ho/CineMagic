@@ -1,9 +1,39 @@
+body.payment-page-background {
+    background-color: #FF7F50;
+}
+
 .payment-container {
-    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 40px auto;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.payment-container .centered-section {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-container .form-group {
+    margin-bottom: 2rem;
+}
+
+.payment-container .summary-section {
+    text-align: center;
 }
 
 .payment-container .payment-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .payment-container .input-section {
@@ -14,6 +44,7 @@
     font-size: 1.3em;
     margin-bottom: 10px;
     display: block;
+    font-weight: 600;
 }
 
 .payment-container .payment-methods .btn {
@@ -47,35 +78,23 @@
     font-weight: bold;
 }
 
-.payment-container .actions {
-    margin-top: 1rem;
+.payment-container .payment-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.payment-container .complete-order-btn {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    margin-bottom: 1rem;
+.payment-container .payment-next-button {
     background-color: #ff5722;
-    border: none;
-    color: white;
 }
 
-.payment-container .complete-order-btn:hover {
+.payment-container .payment-next-button:hover {
     background-color: #ff8c00;
-    color: white;
 }
 
-.payment-container .backButton {
-    background-color: #808080;
-    border-color: #808080;
-    color: white;
-    text-align: center;
-}
-
-.payment-container .backButton:hover {
-    background-color: #C0C0C0;
-    border-color: #C0C0C0;
-    color: white;
+.payment-container .payment-next-button:active {
+    background-color: #ff5722;
 }
 
 .payment-container .input-section .promo-code-group {
@@ -101,12 +120,53 @@
     color: white;
 }
 
-.payment-container .input-section label {
-    font-weight: 500;
-}
-
 .payment-container .payment-methods .btn.button-grey {
     background-color: #808080;
     color: white;
     border: none;
+}
+
+@media (max-width: 768px) {
+    .payment-container {
+        padding: 10px;
+        margin: 20px;
+        max-width: 100%;
+    }
+
+    .payment-container .centered-section {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .payment-container .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .payment-container .input-section label {
+        font-size: 1em;
+    }
+
+    .payment-container .summary-list {
+        font-size: 1em;
+    }
+
+    .payment-container .payment-methods .btn {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .payment-container .input-section .promo-code-group {
+        flex-direction: column;
+    }
+
+    .payment-container .input-section .promo-code-input {
+        flex-grow: 1;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .payment-container .payment-actions {
+        flex-direction: column;
+        justify-content: space-around;
+    }
 }

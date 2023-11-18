@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 import "../styles/PaymentPage.css";
 import Modal from "../components/Modal.js";
 
@@ -85,6 +86,14 @@ const PaymentPage = () => {
         setPromoError('');
     };
 
+    useEffect(() => {
+        document.body.classList.add('payment-page-background');
+
+        return () => {
+            document.body.classList.remove('payment-page-background');
+        };
+    }, []);
+
     return (
         <div className="payment-container">
             <Modal
@@ -95,16 +104,14 @@ const PaymentPage = () => {
 
             <h2 className="text-center payment-header">Payment and Contact</h2>
 
-            <div className="row">
-                <div className="col-md-6 input-section">
+            <div className="input-section centered-section">
+                <div className="form-group">
+                    <label>E-mail:</label>
+                    <input type="email" className="form-control mb-3" placeholder="example@example.com" value={email} onChange={handleEmailChange} />
+
                     <label>Phone number:</label>
                     <input type="text" className="form-control mb-3" placeholder="e.g. 123-456-7890" value={phoneNumber} onChange={handlePhoneNumberChange} />
 
-                    <label>E-mail:</label>
-                    <input type="email" className="form-control mb-3" placeholder="example@example.com" value={email} onChange={handleEmailChange} />
-                </div>
-
-                <div className="col-md-6 input-section">
                     <label>Payment Method:</label>
                     <div className="payment-methods mb-3">
                         <button
@@ -126,6 +133,7 @@ const PaymentPage = () => {
                             Google Pay
                         </button>
                     </div>
+
                     <label>Promo Code:</label>
                     <div className="promo-code-group mb-3">
                         <input
@@ -143,24 +151,25 @@ const PaymentPage = () => {
                         </button>
                     </div>
                 </div>
-            </div>
 
-            <div className="row">
-                <div className="col-12">
+                <div className="summary-section">
                     <ul className="summary-list">
                         <li className="summary-item">Subtotal: ${subtotal.toFixed(2)}</li>
-                        <li className="summary-item">Promo: -${discount.toFixed(2)}</li>
-                        <li className="summary-item">Tax: ${tax.toFixed(2)}</li>
-                        <li className="summary-item">Cleaning Fee: ${cleaningFee.toFixed(2)}</li>
+                        <li className="summary-item">Promo Discount: -${discount.toFixed(2)}</li>
+                        <li className="summary-item">Taxes: ${tax.toFixed(2)}</li>
+                        <li className="summary-item">Booking Fees: ${cleaningFee.toFixed(2)}</li>
                         <li className="total-cost summary-item">Total: ${total.toFixed(2)}</li>
                     </ul>
                 </div>
             </div>
 
-            <div className="text-center actions">
-                <button className="btn complete-order-btn" onClick={handleNextClick}>Next</button>
-                <br />
-                <button className="btn backButton">Back</button>
+            <div className="text-center payment-actions">
+                <Button variant="primary" size="lg" className="payment-next-button" onClick={handleNextClick}>
+                    Confirm
+                </Button>
+                <Button variant="secondary" className="payment-back-button">
+                    Back
+                </Button>
             </div>
         </div>
     );
