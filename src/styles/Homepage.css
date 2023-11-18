@@ -1,0 +1,202 @@
+/* Homepage.css */
+
+.home-page {
+    font-family: 'Arial', sans-serif; 
+  }
+  
+  .hero-section {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+  }
+  
+  .left-info {
+    flex: 1;
+    max-width: 50%; 
+    margin-right: 3%;
+  }
+  
+  .subtitle {
+    font-size: 24px; 
+    font-weight: bold; 
+  }
+  
+  .right-info {
+    flex: 1;
+    max-width: 50%; 
+    text-align: center; 
+    margin-left: 3%;
+  }
+  
+  .theatre-picture {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 72px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+  
+  
+  .description {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .cta-button {
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+  }
+  
+  .featured-movies {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .movie-card {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+  }
+  
+  .featured-movie {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .featured-movie-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 1%;
+  }
+
+  .carousel {
+    max-width: 75%;
+  }
+  
+  .review-text {
+    color: blue;
+    margin-top: 8px;
+  }
+  
+
+  .movie-news {
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center; 
+  }
+  
+  .movie-news-info
+  {
+    justify-content: center;
+  }
+  
+  .movie-news-section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+  }
+  
+  .movie-news-title {
+    color: #333;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-bottom: 1%;
+  }
+  
+  .movie-news-info {
+    color: #333;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 2%;
+    text-align: center;
+    }
+  
+  
+  .movie-article-card {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    }
+
+  .movie-article-card img {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+  }
+
+  .articles {
+    width: 500px;
+  }
+  
+  .movie-news-description {
+    color: blue;
+    margin-top: 8px;
+  }
+
+  .footer {
+    background-color: #f0f0f0; 
+    text-align: center; 
+    padding: 10px; 
+    margin-top: 5%; 
+  }
+  
+  .footer p {
+    color: #888; 
+    font-size: 12px; 
+    margin-top: 0; 
+  }
+  

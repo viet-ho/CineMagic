@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import HomePage from "./components/Homepage";
 import ReviewsPage from "./components/ReviewsPage";
 import SeatBookingPage from "./components/SeatBookingPage";
 import PaymentPage from "./components/PaymentPage";
@@ -9,14 +10,14 @@ import CreditCardPage from "./components/CreditCardPage";
 import PromoCodePage from "./components/PromoCodePage";
 
 function App() {
+  return <HomePage></HomePage>;
   //return <ReviewsPage></ReviewsPage>;
-  return <SeatBookingPage></SeatBookingPage>;
+  //return <SeatBookingPage></SeatBookingPage>;
   //return <PaymentPage></PaymentPage>;
   //return <TicketBookingPage></TicketBookingPage>;
   //return <ConfirmationPage></ConfirmationPage>;
   //return <CreditCardPage></CreditCardPage>;
   //return <PromoCodePage></PromoCodePage>;
-
 }
 
 export default App;
