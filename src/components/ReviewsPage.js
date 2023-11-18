@@ -16,15 +16,15 @@ const Rating = ({ rating }) => {
   const emptyStars = 5 - fullStars - halfStar;
 
   return (
-      <div className="rating">
-        {[...Array(fullStars)].map((_, i) => (
-          <Star key={`full-${i}`} type="full" />
-        ))}
-        {halfStar === 1 && <Star key="half" type="half" />}
-        {[...Array(emptyStars)].map((_, i) => (
-          <Star key={`empty-${i}`} type="empty" />
-        ))}
-      </div>
+    <div className="rating">
+      {[...Array(fullStars)].map((_, i) => (
+        <Star key={`full-${i}`} type="full" />
+      ))}
+      {halfStar === 1 && <Star key="half" type="half" />}
+      {[...Array(emptyStars)].map((_, i) => (
+        <Star key={`empty-${i}`} type="empty" />
+      ))}
+    </div>
   );
 };
 
@@ -44,7 +44,15 @@ const Review = ({ review }) => {
 
 // Reviews Page Component
 const ReviewsPage = () => {
-    useEffect(() => {
+  useEffect(() => {
+    document.body.classList.add('reviews-page-background');
+
+    return () => {
+      document.body.classList.remove('reviews-page-background');
+    };
+  }, []);
+
+  useEffect(() => {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
