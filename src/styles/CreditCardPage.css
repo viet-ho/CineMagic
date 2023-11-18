@@ -1,3 +1,7 @@
+body.credit-page-background {
+    background-color: #FF7F50;
+}
+
 .credit-page {
     display: flex;
     justify-content: center;

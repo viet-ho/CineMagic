@@ -53,10 +53,10 @@ const CreditCardPage = () => {
     }
 
     useEffect(() => {
-        document.body.classList.add('payment-page-background');
+        document.body.classList.add('credit-page-background');
 
         return () => {
-            document.body.classList.remove('payment-page-background');
+            document.body.classList.remove('credit-page-background');
         };
     }, []);
 
