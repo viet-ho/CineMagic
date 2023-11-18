@@ -40,6 +40,7 @@ const PaymentPage = () => {
             setTax(calculateTax(subtotal, 0));
             setShowModal(true);
         }
+        setInputError('');
     };
 
     const toggleModal = () => {
@@ -81,6 +82,7 @@ const PaymentPage = () => {
             setInputError('');
             setShowModal(false);
         }
+        setPromoError('');
     };
 
     return (
@@ -90,6 +92,7 @@ const PaymentPage = () => {
                 toggleModal={toggleModal}
                 message={inputError || promoError}
             />
+
             <h2 className="text-center payment-header">Payment and Contact</h2>
 
             <div className="row">
