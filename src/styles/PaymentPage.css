@@ -1,22 +1,22 @@
-.container {
+.payment-container {
     padding: 2rem;
 }
 
-.payment-header {
+.payment-container .payment-header {
     margin-bottom: 3rem;
 }
 
-.input-section {
+.payment-container .input-section {
     margin-bottom: 2rem;
 }
 
-.input-section label {
+.payment-container .input-section label {
     font-size: 1.3em;
     margin-bottom: 10px;
     display: block;
 }
 
-.payment-methods .btn {
+.payment-container .payment-methods .btn {
     margin-right: 1rem;
     background-color: #ff5722;
     border: none;
@@ -24,11 +24,11 @@
     margin-bottom: 0.1rem;
 }
 
-.payment-methods .btn:hover {
+.payment-container .payment-methods .btn:hover {
     background-color: #ff8c00;
 }
 
-.summary-list {
+.payment-container .summary-list {
     list-style-type: none;
     padding: 0;
     text-align: center;
@@ -37,21 +37,21 @@
     font-size: 1.3em;
 }
 
-.summary-item {
+.payment-container .summary-item {
     margin-bottom: 10px;
 }
 
-.total-cost {
+.payment-container .total-cost {
     border-top: 2px solid black;
     padding-top: 1rem;
     font-weight: bold;
 }
 
-.actions {
+.payment-container .actions {
     margin-top: 1rem;
 }
 
-.complete-order-btn {
+.payment-container .complete-order-btn {
     font-size: 1.5em;
     padding: 10px 20px;
     margin-bottom: 1rem;
@@ -60,52 +60,52 @@
     color: white;
 }
 
-.complete-order-btn:hover {
+.payment-container .complete-order-btn:hover {
     background-color: #ff8c00;
     color: white;
 }
 
-.backButton {
+.payment-container .backButton {
     background-color: #808080;
     border-color: #808080;
     color: white;
     text-align: center;
 }
 
-.backButton:hover {
+.payment-container .backButton:hover {
     background-color: #C0C0C0;
     border-color: #C0C0C0;
     color: white;
 }
 
-.input-section .promo-code-group {
+.payment-container .input-section .promo-code-group {
     display: flex;
     align-items: center;
 }
 
-.input-section .promo-code-input {
+.payment-container .input-section .promo-code-input {
     flex-grow: 1;
     margin-right: 8px;
 }
 
-.input-section .apply-promo-btn {
+.payment-container .input-section .apply-promo-btn {
     background-color: #808080;
     border-color: #808080;
     color: white;
     text-align: center;
 }
 
-.input-section .apply-promo-btn:hover {
+.payment-container .input-section .apply-promo-btn:hover {
     background-color: #C0C0C0;
     border-color: #C0C0C0;
     color: white;
 }
 
-.input-section label {
+.payment-container .input-section label {
     font-weight: 500;
 }
 
-.payment-methods .btn.button-grey {
+.payment-container .payment-methods .btn.button-grey {
     background-color: #808080;
     color: white;
     border: none;

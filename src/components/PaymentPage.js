@@ -84,7 +84,7 @@ const PaymentPage = () => {
     };
 
     return (
-        <div className="container">
+        <div className="payment-container">
             <Modal
                 showModal={showModal}
                 toggleModal={toggleModal}
