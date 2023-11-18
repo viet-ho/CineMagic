@@ -1,5 +1,5 @@
 body.summary-page-background {
-  background-color: #ff5722;
+  background-color: #FF7F50;
 }
 
 .confirm-container {
@@ -20,6 +20,11 @@ body.summary-page-background {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.confirm-container h2 {
+  color: #ff5722;
+  font-weight: bold;
 }
 
 .confirm-container .movie-details img {
@@ -59,6 +64,7 @@ body.summary-page-background {
 .confirm-container .movie-details h3 {
   font-size: 2em;
   font-weight: bold;
+  color: #ff5722;
 }
 
 .confirm-page-action-buttons {
@@ -67,4 +73,58 @@ body.summary-page-background {
   align-items: center;
   margin-top: 20px;
   gap: 10px;
+}
+
+.confirm-page-action-buttons .complete-button {
+  background-color: #ff5722;
+}
+
+.confirm-page-action-buttons .complete-button:hover {
+  background-color: #ff8c00;
+}
+
+.confirm-page-action-buttons .complete-button:active {
+  background-color: #ff5722;
+}
+
+@media (max-width: 768px) {
+  .confirm-container {
+    max-width: 100%;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .confirm-container .movie-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .confirm-container .movie-details img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .confirm-container .movie-details div {
+    align-items: center;
+  }
+
+  .confirm-page-action-buttons {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .confirm-container .main-container {
+    padding: 10px;
+  }
+
+  .confirm-container .movie-details,
+  .confirm-container .ticket-details,
+  .confirm-container .user-details,
+  .confirm-container .price-details {
+    margin-top: 10px;
+  }
+
+  .confirm-container hr {
+    margin: 10px 0;
+  }
 }
