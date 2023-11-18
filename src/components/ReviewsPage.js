@@ -4,18 +4,27 @@ import "../styles/ReviewsPage.css";
 import { useNavigate } from 'react-router-dom';
 
 // Star Component
-const Star = ({ filled }) => {
-  return <span className={`fa fa-star ${filled ? 'checked' : ''}`}></span>;
+const Star = ({ type }) => {
+  const starClass = type === 'full' ? 'fa fa-star' : type === 'half' ? 'fa fa-star-half-o' : 'fa fa-star-o';
+  return <span className={`star ${starClass}`}></span>;
 };
 
 // Rating Component
 const Rating = ({ rating }) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
+
   return (
-    <div className="rating">
-      {[...Array(5)].map((_, i) => (
-        <Star key={i} filled={i < rating} />
-      ))}
-    </div>
+      <div className="rating">
+        {[...Array(fullStars)].map((_, i) => (
+          <Star key={`full-${i}`} type="full" />
+        ))}
+        {halfStar === 1 && <Star key="half" type="half" />}
+        {[...Array(emptyStars)].map((_, i) => (
+          <Star key={`empty-${i}`} type="empty" />
+        ))}
+      </div>
   );
 };
 
@@ -70,8 +79,13 @@ const ReviewsPage = () => {
     <div className="container mt-5 reviews-page">
       <div className="overall-rating">
         <h2>Movie 2</h2>
-        <div className="rating-wrapper">
-          <Rating rating={averageRating} />
+        <div className="rating-and-number-wrapper">
+          <div className="rating-wrapper">
+            <Rating rating={averageRating} />
+          </div>
+          <div className="average-rating-number">
+            {averageRating.toFixed(1)}/5.0
+          </div>
         </div>
       </div>
       <h3>User Reviews</h3>
