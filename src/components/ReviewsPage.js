@@ -19,33 +19,15 @@ const Rating = ({ rating }) => {
   );
 };
 
-/*
-// Review Component
 const Review = ({ review }) => {
   return (
-    <div className="card my-3">
-      <div className="card-body">
-        <h5 className="card-title">{review.name}</h5>
-        <Rating rating={review.rating} />
-        <p className="card-text">{review.text}</p>
-      </div>
-    </div>
-  );
-};
-*/
-
-
-const Review = ({ review }) => {
-  return (
-    <div className="card my-3">
-      <div className="card-body">
-        <div className="review-header">
-          <h5 className="card-title">{review.name}</h5>
-          <div className="review-rating">
-            <Rating rating={review.rating} />
-          </div>
+    <div className="review-card">
+      <div className="review-content">
+        <h5 className="review-title">{review.name}</h5>
+        <div className="review-rating">
+          <Rating rating={review.rating} />
         </div>
-        <p className="card-text">{review.text}</p>
+        <p className="review-text">{review.text}</p>
       </div>
     </div>
   );
@@ -61,12 +43,12 @@ const ReviewsPage = () => {
   }, []);
 
   const reviews = [
-    { id: 1, name: 'Harry M.', rating: 3, text: 'It was alright' },
-    { id: 2, name: 'Vikram C.', rating: 5, text: 'Amazing movie' },
-    { id: 3, name: 'Ekhonmu E.', rating: 4, text: 'Cool to watch' },
-    { id: 4, name: 'Jordan C.', rating: 2, text: 'Boring but watchable' },
-    { id: 5, name: 'Jane Doe', rating: 5, text: 'It was ok' },
-    { id: 6, name: 'Vincent H.', rating: 4, text: 'Ok' },
+    { id: 1, name: 'Harry M.', rating: 5, text: 'Absolutely stunning! The cinematography and special effects in this film were nothing short of mind-blowing, perfectly complementing a riveting and well-crafted storyline. The characters were richly developed, drawing the audience deeply into their world.' },
+    { id: 2, name: 'Vikram C.', rating: 3, text: 'This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.' },
+    { id: 3, name: 'Ekhonmu E.', rating: 4, text: 'A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.' },
+    { id: 4, name: 'Jordan C.', rating: 4, text: 'A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.' },
+    { id: 5, name: 'Jane Doe', rating: 5, text: 'An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.' },
+    { id: 6, name: 'Vincent H.', rating: 2, text: 'Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.' },
     // ... Add more reviews as needed
   ];
 
