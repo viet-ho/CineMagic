@@ -58,6 +58,7 @@ body.reviews-page-background {
   line-height: 1.5;
   margin-top: 10px;
   font-style: italic;
+  color: white;
 }
 
 .reviews-page .rating {

@@ -55,7 +55,6 @@ const CreditCardPage = () => {
         <div className="container mt-5">
             <div className="row justify-content-center">
                 <div className="col-md-6">
-                    <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Credit Card Information</h2>
                         <div className="form-group mb-3">
                             <label><strong>Credit Card Number:</strong></label>
@@ -117,12 +116,11 @@ const CreditCardPage = () => {
                             />
                         </div>
                         <div className="text-center mb-2">
-                            <button className="btn confirm-button">Confirm Card</button>
+                            <button className="btn confirm-button" onClick={handleSubmit}>Confirm Card</button>
                         </div>
                         <div className="text-center">
                             <button className="btn btn-secondary back-button" onClick={() => { /* Handle the back button logic here */ }}>Back</button>
                         </div>
-                    </form>
                 </div>
             </div>
             <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
