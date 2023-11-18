@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../styles/CreditCardPage.css";
+import Modal from "../components/Modal.js";
 
 const CreditCardPage = () => {
     const [cardDetails, setCardDetails] = useState({
         cardNumber: '',
         cardName: '',
         expiry: '',
-        cvv: ''
+        cvv: '',
+        postalCode: ''
     });
+
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,8 +22,33 @@ const CreditCardPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(cardDetails);
-        // Here you can handle the submission of the form to your backend
+    
+        const cardNumberRegex = /^\d{16}$/;
+        const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
+        const cvvRegex = /^\d{3}$/;
+        const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+    
+        // Validation checks
+        if (!cardNumberRegex.test(cardDetails.cardNumber)) {
+            setModalMessage("Please enter a valid 16-digit credit card number.");
+        } else if (!cardDetails.cardName.trim()) {
+            setModalMessage("Please enter the name on the card.");
+        } else if (!expiryRegex.test(cardDetails.expiry)) {
+            setModalMessage("Please enter a valid expiry date in MM/YY format.");
+        } else if (!cvvRegex.test(cardDetails.cvv)) {
+            setModalMessage("Please enter a valid 3-digit CVV.");
+        } else if (!postalCodeRegex.test(cardDetails.postalCode)) {
+            setModalMessage("Please enter a valid postal code (for example: T2N 1N4).");
+        } else {
+            console.log(cardDetails);
+            return;
+        }
+    
+        setShowModal(true);
+    }
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
     }
 
     return (
@@ -28,9 +59,9 @@ const CreditCardPage = () => {
                         <h2 className="text-center mb-4">Credit Card Information</h2>
                         <div className="form-group mb-3">
                             <label><strong>Credit Card Number:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cardNumber"
                                 value={cardDetails.cardNumber}
                                 onChange={handleChange}
@@ -40,9 +71,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>Name On Card:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cardName"
                                 value={cardDetails.cardName}
                                 onChange={handleChange}
@@ -51,9 +82,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>Expiry:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="expiry"
                                 value={cardDetails.expiry}
                                 onChange={handleChange}
@@ -63,9 +94,9 @@ const CreditCardPage = () => {
                         </div>
                         <div className="form-group mb-3">
                             <label><strong>CVV:</strong></label>
-                            <input 
-                                type="text" 
-                                className="form-control" 
+                            <input
+                                type="text"
+                                className="form-control"
                                 name="cvv"
                                 value={cardDetails.cvv}
                                 onChange={handleChange}
@@ -73,15 +104,28 @@ const CreditCardPage = () => {
                                 maxLength={3}
                             />
                         </div>
+                        <div className="form-group mb-3">
+                            <label><strong>Postal Code:</strong></label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="postalCode"
+                                value={cardDetails.postalCode}
+                                onChange={handleChange}
+                                placeholder="Enter postal code (T2N 1N4)"
+                                maxLength={7}
+                            />
+                        </div>
                         <div className="text-center mb-2">
-                            <button type="submit" className="btn" style={{backgroundColor: '#ff5722', color: 'white'}}>Confirm Card</button>
+                            <button className="btn confirm-button">Confirm Card</button>
                         </div>
                         <div className="text-center">
-                            <button type="button" className="btn btn-secondary" style={{backgroundColor: '#808080', color: 'white'}} onClick={() => { /* Handle the back button logic here */ }}>Back</button>
+                            <button className="btn btn-secondary back-button" onClick={() => { /* Handle the back button logic here */ }}>Back</button>
                         </div>
                     </form>
                 </div>
             </div>
+            <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
         </div>
     );
 }

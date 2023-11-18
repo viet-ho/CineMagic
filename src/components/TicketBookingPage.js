@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/TicketBookingPage.css";
+import Modal from "../components/Modal.js";
 
 function TicketBookingPage() {
     const [adultCount, setAdultCount] = useState(0);
     const [childCount, setChildCount] = useState(0);
     const [seniorCount, setSeniorCount] = useState(0);
-    const [wheelchairCount, setWheelchairCount] = useState('');
+    //const [wheelchairCount, setWheelchairCount] = useState('');
     const [specialAssistance, setSpecialAssistance] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const subtotal = adultCount * 22 + childCount * 10 + seniorCount * 10;
 
+    const handleConfirmTickets = () => {
+        if (adultCount + childCount + seniorCount === 0) {
+            setModalMessage('Please add at least one ticket before confirming.');
+            setShowModal(true);
+        } else {
+            // Proceed with the next steps of confirming the ticket
+        }
+    };
+
+    const toggleModal = () => {
+        setShowModal(!showModal);
+    };
+
     return (
         <div className="container">
+            <Modal showModal={showModal} toggleModal={toggleModal} message={modalMessage} />
             <h2>Ticket Type</h2>
 
             <div className="card mb-3">
@@ -48,19 +65,33 @@ function TicketBookingPage() {
                 </div>
             </div>
 
+            {/*
             <div className="mb-3">
                 <label>How many wheelchair seats will be required, if any?:</label>
                 <input
                     type="number"
                     className="form-control"
                     value={wheelchairCount}
-                    onChange={(e) => setWheelchairCount(e.target.value)}
-                    placeholder="1, 2, or more"
+                    onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '') {
+                            setWheelchairCount(value);
+                        } else {
+                            const newValue = parseInt(value, 10);
+                            if (newValue >= 0 && newValue <= 40) {
+                                setWheelchairCount(newValue);
+                            }
+                        }
+                    }}
+                    placeholder="0, 1, 2, or more"
+                    min="0"
+                    max="40"
                 />
             </div>
+                */}
 
             <div className="mb-3">
-                <label>Special Assistance:</label>
+                <label className="label-text">Special Assistance:</label>
                 <textarea
                     className="form-control"
                     rows="3"
@@ -75,7 +106,7 @@ function TicketBookingPage() {
             </div>
 
             <div className="ticket-action-container">
-                <button className="btn btn-confirm">Confirm Ticket(s)</button>
+                <button className="btn btn-confirm" onClick={handleConfirmTickets}>Confirm Ticket(s)</button>
                 <button className="btn btn-back">Back</button>
             </div>
 

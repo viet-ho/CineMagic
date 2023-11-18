@@ -21,6 +21,7 @@
     background-color: #ff5722;
     border: none;
     text-align: center;
+    margin-bottom: 0.1rem;
 }
 
 .payment-methods .btn:hover {
@@ -75,4 +76,37 @@
     background-color: #C0C0C0;
     border-color: #C0C0C0;
     color: white;
+}
+
+.input-section .promo-code-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-section .promo-code-input {
+    flex-grow: 1;
+    margin-right: 8px;
+}
+
+.input-section .apply-promo-btn {
+    background-color: #808080;
+    border-color: #808080;
+    color: white;
+    text-align: center;
+}
+
+.input-section .apply-promo-btn:hover {
+    background-color: #C0C0C0;
+    border-color: #C0C0C0;
+    color: white;
+}
+
+.input-section label {
+    font-weight: 500;
+}
+
+.payment-methods .btn.button-grey {
+    background-color: #808080;
+    color: white;
+    border: none;
 }

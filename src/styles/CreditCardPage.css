@@ -1,0 +1,21 @@
+.confirm-button {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+}
+
+.confirm-button:hover {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.back-button {
+    background-color: #808080;
+    color: white;
+    border: none;
+}
+
+.back-button:hover {
+    background-color: #C0C0C0;
+    color: white;
+}
