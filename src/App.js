@@ -12,10 +12,10 @@ function App() {
   //return <HomePage></HomePage>;
   //return <ReviewsPage></ReviewsPage>;
   //return <SeatBookingPage></SeatBookingPage>;
-  //return <PaymentPage></PaymentPage>;
+  return <PaymentPage></PaymentPage>;
   //return <TicketBookingPage></TicketBookingPage>;
   //return <CreditCardPage></CreditCardPage>;
-  return <SummaryPage></SummaryPage>;
+  //return <SummaryPage></SummaryPage>;
 
 }
 
