@@ -7,17 +7,17 @@ const Modal = ({ showModal, toggleModal, message }) => {
     }
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <div className="modal-header">
-                    <span className="modal-title">Error</span>
-                    <button className="modal-close-button" onClick={toggleModal}>&times;</button>
+        <div className="v-modal-overlay">
+            <div className="v-modal-content">
+                <div className="v-modal-header">
+                    <span className="v-modal-title">Error</span>
+                    <button className="v-modal-close-button" onClick={toggleModal}>&times;</button>
                 </div>
-                <div className="modal-body">
+                <div className="v-modal-body">
                     <p>{message}</p>
                 </div>
-                <div className="modal-footer">
-                    <button className="modal-ok-button" onClick={toggleModal}>OK</button>
+                <div className="v-modal-footer">
+                    <button className="v-modal-ok-button" onClick={toggleModal}>OK</button>
                 </div>
             </div>
         </div>
