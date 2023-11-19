@@ -39,6 +39,14 @@ const DateSelection = () => {
     alert(`Showtime confirmed: ${selectedShowtime}`);
   };
 
+  useEffect(() => {
+    document.body.classList.add('date-selection');
+
+    return () => {
+      document.body.classList.remove('date-selection');
+    };
+  }, []);
+
   return (
     <div className="date-selection">
       <h1>🎥 Selected Movie: Indie Movie</h1>
