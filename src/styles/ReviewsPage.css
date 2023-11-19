@@ -3,7 +3,6 @@ body.reviews-page-background {
 }
 
 .reviews-page {
-  font-family: 'Arial', sans-serif;
   color: #333;
   background-color: #f5f5f5;
   padding-bottom: 60px;
@@ -19,6 +18,10 @@ body.reviews-page-background {
 .reviews-page .overall-rating {
   text-align: center;
   margin-bottom: 30px;
+}
+
+.reviews-page .overall-rating h2 {
+  font-weight: bold;
 }
 
 .reviews-page .rating-wrapper {
@@ -58,6 +61,7 @@ body.reviews-page-background {
   line-height: 1.5;
   margin-top: 10px;
   font-style: italic;
+  color: white;
 }
 
 .reviews-page .rating {
