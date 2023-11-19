@@ -13,12 +13,12 @@ body.date-selection {
   text-align: center;
 }
 
-h1 {
+.date-selection h1 {
   font-size: 40px !important;
   margin: 10% !important;
 }
 
-section {
+.date-selection section {
   margin-bottom: 20px;
 }
 
