@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/SeatBookingPage.css";
@@ -43,6 +43,14 @@ const SeatBookingPage = () => {
     const hasSelectedSeats = seats.some(seat => seat.isSelected);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.body.classList.add('seat-booking-page-background');
+
+        return () => {
+            document.body.classList.remove('seat-booking-page-background');
+        };
+    }, []);
 
     return (
         <div className="seatBookingContainer">

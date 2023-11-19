@@ -1,3 +1,7 @@
+body.seat-booking-page-background {
+    background-color: rgb(229 229 229);
+}
+
 .seatButton {
     min-width: 50px;
     min-height: 50px;
@@ -52,6 +56,11 @@
 
 .confirmButton .btn:hover {
     background-color: #ff8c00;
+}
+
+.confirmButton .btn:active {
+    background-color: #ff5722;
+    color: white;
 }
 
 .backButton .btn {
