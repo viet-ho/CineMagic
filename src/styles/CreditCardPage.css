@@ -28,6 +28,7 @@ body.credit-page-background {
 
 .credit-page .credit-confirm-button {
     background-color: #ff5722;
+    border: none;
 }
 
 .credit-page .credit-confirm-button:hover {

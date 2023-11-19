@@ -87,6 +87,7 @@ body.payment-page-background {
 
 .payment-container .payment-next-button {
     background-color: #ff5722;
+    border: none;
 }
 
 .payment-container .payment-next-button:hover {
