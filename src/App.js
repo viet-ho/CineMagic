@@ -1,3 +1,6 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/Homepage";
@@ -12,14 +15,28 @@ import MovieInfo from "./components/MovieInfo";
 
 function App() {
   //return <DateSelection></DateSelection>;
-  return <MovieInfo></MovieInfo>;
+  //return <MovieInfo></MovieInfo>;
   //return <HomePage></HomePage>;
   //return <ReviewsPage></ReviewsPage>;
-  //return <SeatBookingPage></SeatBookingPage>;
+  //return <SeatBookingPage totalSeats={60} availableSeats={48} selectedTickets={4} />
   //return <PaymentPage></PaymentPage>;
-  //return <TicketBookingPage></TicketBookingPage>;
+  //return <TicketBookingPage availableSeats={30} />;
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
+
+  {/*
+  const totalSeats = 60;
+  const availableSeats = 48;
+
+  return (
+    <Routes>
+      <Route path="/" element={<TicketBookingPage availableSeats={availableSeats} />} />
+      <Route path="/seat-booking" element={<SeatBookingPage totalSeats={totalSeats} availableSeats={availableSeats} selectedTickets={4} />} />
+    </Routes>
+  );
+  */}
+  
+
 }
 
 export default App;
