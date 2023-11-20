@@ -88,7 +88,7 @@ function TicketBookingPage() {
                         rows="3"
                         value={specialAssistance}
                         onChange={(e) => setSpecialAssistance(e.target.value)}
-                        placeholder="Please provide details for any special assistance needed."
+                        placeholder="Please provide details for any special assistance needed. We provide assistive technology for individuals who are deaf, hard of hearing, blind, visually impaired, and others."
                     ></textarea>
                 </div>
 

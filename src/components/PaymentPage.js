@@ -63,10 +63,10 @@ const PaymentPage = () => {
 
     const handleNextClick = () => {
         if (!emailRegex.test(email)) {
-            setInputError('Please enter a valid email.');
+            setInputError('Please enter a valid email in the format example@example.com');
             setShowModal(true);
         } else if (!phoneRegex.test(phoneNumber)) {
-            setInputError('Please enter a valid phone number in the format 123-456-7890.');
+            setInputError('Please enter a valid phone number in the format 123-456-7890');
             setShowModal(true);
         } else if (!selectedPaymentMethod) {
             setInputError('Please select a payment method.');

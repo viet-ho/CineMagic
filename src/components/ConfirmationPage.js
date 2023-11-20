@@ -79,7 +79,7 @@ const SummaryPage = () => {
             <p><strong>Youth Tickets:</strong> {ticketDetails.youthTickets}</p>
             <p><strong>Senior Tickets:</strong> {ticketDetails.seniorTickets}</p>
             <p><strong>Seat Number:</strong> {ticketDetails.seatNumber}</p>
-            <p><strong>Special Request:</strong> {ticketDetails.specialRequest}</p>
+            <p><strong>Special Assistance:</strong> {ticketDetails.specialRequest}</p>
           </section>
           <hr />
           <section className="user-details">
