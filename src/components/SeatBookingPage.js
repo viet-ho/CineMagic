@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/SeatBookingPage.css";
 import Modal from "../components/Modal.js";
@@ -17,7 +18,11 @@ const Seat = ({ id, isBooked, isAccessible, isSelected, toggleBooking }) => {
     );
 };
 
-const SeatBookingPage = ({ totalSeats, availableSeats, selectedTickets }) => {
+const SeatBookingPage = ({ totalSeats, availableSeats }) => {
+
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const selectedTickets = parseInt(searchParams.get('tickets'), 10) || 0;
 
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');

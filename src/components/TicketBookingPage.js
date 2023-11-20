@@ -7,6 +7,7 @@ import Modal from "../components/Modal.js";
 
 function TicketBookingPage({ availableSeats }) {
     const navigate = useNavigate();
+
     const [adultCount, setAdultCount] = useState(0);
     const [childCount, setChildCount] = useState(0);
     const [seniorCount, setSeniorCount] = useState(0);
@@ -22,7 +23,7 @@ function TicketBookingPage({ availableSeats }) {
             setModalMessage('Please add at least one ticket before confirming.');
             setShowModal(true);
         } else {
-            navigate('/seat-booking');
+            navigate(`/seat-booking?tickets=${totalTickets}`);
         }
     };
 
