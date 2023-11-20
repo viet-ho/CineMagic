@@ -38,3 +38,23 @@ body.credit-page-background {
 .credit-page .credit-confirm-button:active {
     background-color: #ff5722;
 }
+
+@media (max-width: 768px) {
+    .credit-page {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .credit-card-container {
+        max-width: 90%;
+        box-shadow: none;
+    }
+
+    .credit-page .credit-actions {
+        width: 100%;
+    }
+
+    .credit-page .credit-confirm-button {
+        width: 100%;
+    }
+}
