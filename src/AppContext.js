@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AppContext = createContext();
 
@@ -7,6 +7,7 @@ export const useAppContext = () => useContext(AppContext);
 export const AppProvider = ({ children }) => {
     const totalSeats = 60;
     const availableSeats = 48;
+    const cleaningFee = 2.5;
     const [subtotal, setSubtotal] = useState(0);
     const [totalTickets, setTotalTickets] = useState(0);
     const [adultCount, setAdultCount] = useState(0);
@@ -19,13 +20,26 @@ export const AppProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
-    
+    const [tax, setTax] = useState(0);
+    const [total, setTotal] = useState(0);
+
     // Add other shared states if needed
+
+    const calculateTax = (subtotal, discount) => 0.05 * (subtotal - discount);
+
+    useEffect(() => {
+        setTax(calculateTax(subtotal, discount));
+    }, [subtotal, discount]);
+
+    useEffect(() => {
+        setTotal(subtotal - discount + tax + cleaningFee);
+    }, [subtotal, discount, tax]);
 
     return (
         <AppContext.Provider value={{
             totalSeats,
             availableSeats,
+            cleaningFee,
             subtotal, setSubtotal,
             totalTickets, setTotalTickets,
             adultCount, setAdultCount,
@@ -37,7 +51,9 @@ export const AppProvider = ({ children }) => {
             discount, setDiscount,
             email, setEmail,
             phoneNumber, setPhoneNumber,
-            selectedPaymentMethod, setSelectedPaymentMethod
+            selectedPaymentMethod, setSelectedPaymentMethod,
+            tax,
+            total,
 
             // Provide other states here
         }}>

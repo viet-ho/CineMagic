@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import "../styles/ConfirmationPage.css";
 
 const SummaryPage = () => {
-  // Placeholder data
+
+  const { adultCount, childCount, seniorCount, seatIDs, phoneNumber, email, selectedPaymentMethod, promoCode, subtotal, discount, tax, cleaningFee, total, specialAssistance } = useAppContext();
+
+  const navigate = useNavigate();
+
   const movieDetails = {
     title: "Movie Title",
     date: "Date",
@@ -13,26 +19,36 @@ const SummaryPage = () => {
     imageUrl: "https://source.unsplash.com/featured/?movie"
   };
 
+  const adultTicketPrice = 22;
+  const youthTicketPrice = 10;
+  const seniorTicketPrice = 10;
+
   const ticketDetails = {
-    adultTickets: "[Number of Adult Tickets]",
-    youthTickets: "[Number of Youth Tickets]",
-    seniorTickets: "[Number of Senior Tickets]",
-    seatNumber: "[Seat Number]"
+    adultTickets: `${adultCount} ($${adultTicketPrice} x ${adultCount} = $${adultCount * adultTicketPrice})`,
+    youthTickets: `${childCount} ($${youthTicketPrice} x ${childCount} = $${childCount * youthTicketPrice})`,
+    seniorTickets: `${seniorCount} ($${seniorTicketPrice} x ${seniorCount} = $${seniorCount * seniorTicketPrice})`,
+    seatNumber: seatIDs.map(seatID => {
+      if (seatID === 'S5' || seatID === 'S6') {
+        return `${seatID} (Accessibility Seat)`;
+      }
+      return seatID;
+    }).join(", "),
+    specialRequest: specialAssistance ? specialAssistance: "None"
   };
 
   const userDetails = {
-    phone: "[Phone Number]",
-    email: "[Email]",
-    paymentMethod: "[Payment Method]",
-    promoCode: "[Promo Code]"
+    phone: phoneNumber,
+    email: email,
+    paymentMethod: selectedPaymentMethod,
+    promoCode: promoCode ? promoCode : "None"
   };
 
   const priceDetails = {
-    subtotal: "$[Amount]",
-    discount: "$[Discount]",
-    taxes: "$[Tax Amount]",
-    bookingFee: "$[Booking Fee]",
-    total: "$[Total Amount]",
+    subtotal: subtotal.toFixed(2),
+    discount: discount.toFixed(2),
+    taxes: tax.toFixed(2),
+    bookingFee: cleaningFee.toFixed(2),
+    total: total.toFixed(2),
   };
 
   useEffect(() => {
@@ -63,6 +79,7 @@ const SummaryPage = () => {
             <p><strong>Youth Tickets:</strong> {ticketDetails.youthTickets}</p>
             <p><strong>Senior Tickets:</strong> {ticketDetails.seniorTickets}</p>
             <p><strong>Seat Number:</strong> {ticketDetails.seatNumber}</p>
+            <p><strong>Special Request:</strong> {ticketDetails.specialRequest}</p>
           </section>
           <hr />
           <section className="user-details">
@@ -75,17 +92,17 @@ const SummaryPage = () => {
           <hr />
           <section className="price-details">
             <h2>Total Price</h2>
-            <p><strong>Subtotal:</strong> {priceDetails.subtotal}</p>
-            <p><strong>Promo Discount:</strong> {priceDetails.discount}</p>
-            <p><strong>Taxes:</strong> {priceDetails.taxes}</p>
-            <p><strong>Booking Fees:</strong> {priceDetails.bookingFee}</p>
-            <p><strong>Total: {priceDetails.total}</strong></p>
+            <p><strong>Subtotal:</strong> ${priceDetails.subtotal}</p>
+            <p><strong>Promo Discount:</strong> -${priceDetails.discount}</p>
+            <p><strong>Taxes:</strong> ${priceDetails.taxes}</p>
+            <p><strong>Booking Fees:</strong> ${priceDetails.bookingFee}</p>
+            <p><strong>Total: ${priceDetails.total}</strong></p>
           </section>
           <div className="confirm-page-action-buttons">
             <Button variant="primary" size="lg" className="complete-button">
               Complete Order
             </Button>
-            <Button variant="secondary" className="complete-back-button">
+            <Button variant="secondary" className="complete-back-button" onClick={() => navigate(-1)}>
               Back
             </Button>
           </div>

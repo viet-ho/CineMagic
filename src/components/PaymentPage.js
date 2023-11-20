@@ -9,17 +9,13 @@ import Modal from "../components/Modal.js";
 
 const PaymentPage = () => {
 
-    const { subtotal, promoCode, setPromoCode, discount, setDiscount, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod } = useAppContext();
+    const { subtotal, promoCode, setPromoCode, discount, setDiscount, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod, tax, cleaningFee, total } = useAppContext();
     
     const navigate = useNavigate();
 
     const [promoError, setPromoError] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [inputError, setInputError] = useState('');
-
-    const cleaningFee = 2.50;
-    const calculateTax = (subtotal, discount) => 0.05 * (subtotal - discount);
-    const [tax, setTax] = useState(calculateTax(subtotal, discount));
 
     const handlePromoCodeChange = (event) => {
         setPromoCode(event.target.value);
@@ -28,7 +24,6 @@ const PaymentPage = () => {
     const applyPromoCode = () => {
         if (promoCode === 'OFF$2') {
             setDiscount(2);
-            setTax(calculateTax(subtotal, 2));
             setPromoError('');
             setShowModal(false);
         } else {
@@ -38,7 +33,6 @@ const PaymentPage = () => {
                 setPromoError('Invalid promo code. Please try again.');
             }
             setDiscount(0);
-            setTax(calculateTax(subtotal, 0));
             setShowModal(true);
         }
         setInputError('');
@@ -47,8 +41,6 @@ const PaymentPage = () => {
     const toggleModal = () => {
         setShowModal(!showModal);
     };
-
-    const total = subtotal - discount + tax + cleaningFee;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
@@ -82,6 +74,7 @@ const PaymentPage = () => {
         } else {
             setInputError('');
             setShowModal(false);
+            navigate('/confirmation-page');
         }
         setPromoError('');
     };

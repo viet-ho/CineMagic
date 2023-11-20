@@ -23,15 +23,17 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
 
+  {/*
   return (
     <Routes>
       <Route path="/" element={<TicketBookingPage />} />
       <Route path="/seat-booking" element={<SeatBookingPage />} />
       <Route path="/payment" element={<PaymentPage />} />
       <Route path="/credit-card" element={<CreditCardPage />} />
+      <Route path="/confirmation-page" element={<ConfirmationPage />} />
     </Routes>
   );
-
+  */}
 
 }
 
