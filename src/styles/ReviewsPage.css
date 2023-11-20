@@ -2,35 +2,44 @@ body.reviews-page-background {
   background-color: #000;
 }
 
+.reviews-page-height {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
 .reviews-page {
   color: #333;
   background-color: #f5f5f5;
   padding-bottom: 60px;
-  margin: 20px auto;
+  margin: 40px auto;
   border-radius: 8px;
-}
-
-.reviews-page h2,
-.reviews-page h3 {
-  font-weight: 600;
 }
 
 .reviews-page .overall-rating {
   text-align: center;
   margin-bottom: 30px;
+  padding-top: 20px;
 }
 
 .reviews-page .overall-rating h2 {
   font-weight: bold;
 }
 
-.reviews-page .rating-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.reviews-page .overall-rating h3 {
+  font-weight: 600;
 }
 
-.reviews-page .review-card {
+.reviews-page .rating-wrapper {
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.review-card {
   background-color: #ff5722;
   color: #fff;
   border: 1px solid #ffb347;
@@ -41,22 +50,22 @@ body.reviews-page-background {
   transition: box-shadow 0.3s;
 }
 
-.reviews-page .review-card:hover {
+.review-card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.reviews-page .review-content {
+.review-content {
   display: flex;
   flex-direction: column;
 }
 
-.reviews-page .review-title {
+.review-title {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.reviews-page .review-text {
+.review-text {
   font-size: 16px;
   line-height: 1.5;
   margin-top: 10px;
@@ -64,13 +73,13 @@ body.reviews-page-background {
   color: white;
 }
 
-.reviews-page .rating {
+.rating {
   display: flex;
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.reviews-page .star {
+.star {
   color: #FDCC0D;
   font-size: 24px;
 }
@@ -110,11 +119,6 @@ body.reviews-page-background {
   text-align: center;
 }
 
-.reviews-page .rating-wrapper {
-  display: inline-block;
-  margin: 0 auto;
-}
-
 .reviews-page .average-rating-number {
   font-size: 18px;
   font-weight: 600;
@@ -128,19 +132,37 @@ body.reviews-page-background {
 }
 
 @media (max-width: 768px) {
-  .reviews-page .review-card {
-    padding: 15px;
+
+  .reviews-page {
+    margin: 20px auto;
+    padding-bottom: 30px;
+    width: 90%;
   }
 
-  .reviews-page .review-title {
+  .reviews-page .overall-rating {
+    padding-top: 10px;
+  }
+
+  .review-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  .review-title {
     font-size: 18px;
   }
 
-  .reviews-page .review-text {
+  .review-text {
     font-size: 14px;
   }
 
-  .reviews-page .rating {
+  .rating {
     font-size: 20px;
+  }
+
+  .reviews-page .see-more-button,
+  .reviews-page .back-button {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }

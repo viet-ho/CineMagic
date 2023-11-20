@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/SeatBookingPage.css";
+import Modal from "../components/Modal.js";
 
 const Seat = ({ id, isBooked, isAccessible, isSelected, toggleBooking }) => {
     return (
@@ -17,32 +19,75 @@ const Seat = ({ id, isBooked, isAccessible, isSelected, toggleBooking }) => {
 };
 
 const SeatBookingPage = () => {
+
+    const { availableSeats, totalSeats, totalTickets, seatIDs, setSeatIDs } = useAppContext();
+
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+
     const generateSeats = () => {
-        const seats = [];
-        for (let i = 1; i <= 40; i++) {
-            seats.push({
-                id: `S${i}`,
-                isBooked: i > 30, // First 30 seats are available, rest are booked
-                isAccessible: ['S5', 'S6'].includes(`S${i}`), // Two accessible seats
-                isSelected: false
-            });
-        }
-        return seats;
+        return Array.from({ length: totalSeats }, (_, i) => {
+            const id = `S${i + 1}`;
+            return {
+                id: id,
+                isBooked: i >= availableSeats,
+                isAccessible: ['S5', 'S6'].includes(id),
+                isSelected: seatIDs.includes(id),
+            };
+        });
     };
 
     const [seats, setSeats] = useState(generateSeats);
 
+    useEffect(() => {
+        setSeats(generateSeats());
+    }, [seatIDs]);
+
     const toggleBooking = (id) => {
-        setSeats(
-            seats.map((seat) =>
-                seat.id === id ? { ...seat, isSelected: !seat.isSelected } : seat
-            )
-        );
+        setSeats(seats.map((seat) => {
+            if (seat.id === id && !seat.isBooked) {
+                const isSelected = !seat.isSelected;
+                // Determine if adding or removing a seat
+                if (isSelected) {
+                    if (seatIDs.length < totalTickets) {
+                        setSeatIDs([...seatIDs, id]);
+                    } else {
+                        // Optionally, show a message that no more seats can be selected
+                        setModalMessage("You cannot select more seats than the number of tickets.");
+                        setShowModal(true);
+                        return seat; // Early return to prevent selecting more seats
+                    }
+                } else {
+                    const newSeatIDs = seatIDs.filter(seatID => seatID !== id);
+                    setSeatIDs(newSeatIDs);
+                }
+                return { ...seat, isSelected: isSelected };
+            }
+            return seat;
+        }));
     };
 
-    const hasSelectedSeats = seats.some(seat => seat.isSelected);
+    const hasSelectedSeats = seatIDs.length > 0;
 
     const navigate = useNavigate();
+
+    const handleConfirmSeats = () => {
+        const selectedSeatCount = seats.filter(seat => seat.isSelected).length;
+        if (selectedSeatCount !== totalTickets) {
+            setModalMessage(`Please select exactly ${totalTickets} seats.`);
+            setShowModal(true);
+            return;
+        }
+        navigate('/payment');
+    };
+
+    useEffect(() => {
+        document.body.classList.add('seat-booking-page-background');
+
+        return () => {
+            document.body.classList.remove('seat-booking-page-background');
+        };
+    }, []);
 
     return (
         <div className="seatBookingContainer">
@@ -51,7 +96,7 @@ const SeatBookingPage = () => {
             <div className="seatContainer">
                 {seats.map((seat, index) => (
                     <React.Fragment key={seat.id}>
-                        {index % 8 === 0 && <div className="w-100"></div>}
+                        {index % 10 === 0 && <div className="w-100"></div>}
                         <Seat
                             id={seat.id}
                             isBooked={seat.isBooked}
@@ -64,7 +109,7 @@ const SeatBookingPage = () => {
             </div>
             {hasSelectedSeats && (
                 <div className="text-center confirmButton">
-                    <button className="btn btn-warning">Confirm Seat(s)</button>
+                    <button className="btn btn-warning" onClick={handleConfirmSeats}>Confirm Seat(s)</button>
                 </div>
             )}
             <div className="text-center backButton">
@@ -84,6 +129,7 @@ const SeatBookingPage = () => {
                     <span> Accessibility Seat</span>
                 </div>
             </div>
+            <Modal showModal={showModal} toggleModal={() => setShowModal(!showModal)} message={modalMessage} />
         </div>
     );
 };

@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import "../styles/CreditCardPage.css";
 import Modal from "../components/Modal.js";
 
 const CreditCardPage = () => {
+
+    const { setSelectedPaymentMethod } = useAppContext();
+
+    const navigate = useNavigate();
+
     const [cardDetails, setCardDetails] = useState({
         cardNumber: '',
         cardName: '',
@@ -19,7 +26,7 @@ const CreditCardPage = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setCardDetails(prevDetails => ({ ...prevDetails, [name]: value }));
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,10 +49,16 @@ const CreditCardPage = () => {
             setModalMessage("Please enter a valid postal code (for example: T2N 1N4).");
         } else {
             console.log(cardDetails);
+            navigate(-1);
             return;
         }
 
         setShowModal(true);
+    };
+
+    const handleCreditCardClick = () => {
+        setSelectedPaymentMethod('');
+        navigate(-1);
     }
 
     const toggleModal = () => {
@@ -129,7 +142,7 @@ const CreditCardPage = () => {
                             <Button variant="primary" className="credit-confirm-button" onClick={handleSubmit}>
                                 Confirm Card
                             </Button>
-                            <Button variant="secondary" className="credit-back-button">
+                            <Button variant="secondary" className="credit-back-button" onClick={handleCreditCardClick}>
                                 Back
                             </Button>
                         </div>

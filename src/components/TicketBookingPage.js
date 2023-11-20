@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import "../styles/TicketBookingPage.css";
 import Modal from "../components/Modal.js";
 
 function TicketBookingPage() {
-    const [adultCount, setAdultCount] = useState(0);
-    const [childCount, setChildCount] = useState(0);
-    const [seniorCount, setSeniorCount] = useState(0);
-    //const [wheelchairCount, setWheelchairCount] = useState('');
-    const [specialAssistance, setSpecialAssistance] = useState('');
+
+    const { availableSeats,  adultCount, childCount, seniorCount, specialAssistance, setTotalTickets, setSubtotal, setAdultCount, setChildCount, setSeniorCount, setSpecialAssistance } = useAppContext();
+
+    const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
     const subtotal = adultCount * 22 + childCount * 10 + seniorCount * 10;
+    const totalTickets = adultCount + childCount + seniorCount;
 
     const handleConfirmTickets = () => {
         if (adultCount + childCount + seniorCount === 0) {
             setModalMessage('Please add at least one ticket before confirming.');
             setShowModal(true);
         } else {
-            // Proceed with the next steps of confirming the ticket
+            setTotalTickets(totalTickets);
+            setSubtotal(subtotal);
+            navigate('/seat-booking');
         }
     };
 
     const toggleModal = () => {
         setShowModal(!showModal);
     };
+
+    const canAddTicket = (count) => totalTickets < availableSeats && count < availableSeats;
 
     useEffect(() => {
         document.body.classList.add('ticket-page-background');
@@ -46,7 +52,7 @@ function TicketBookingPage() {
                     <div className="card-body">
                         <span>Adult (18-64): $22</span>
                         <div>
-                            <button className="btn btn-primary" onClick={() => setAdultCount(adultCount + 1)}>+</button>
+                            <button className="btn btn-primary" onClick={() => canAddTicket(adultCount) && setAdultCount(adultCount + 1)}>+</button>
                             <span className="mx-2">{adultCount}</span>
                             <button className="btn btn-primary" onClick={() => adultCount > 0 && setAdultCount(adultCount - 1)}>-</button>
                         </div>
@@ -57,7 +63,7 @@ function TicketBookingPage() {
                     <div className="card-body">
                         <span>Child (0-17): $10</span>
                         <div>
-                            <button className="btn btn-primary" onClick={() => setChildCount(childCount + 1)}>+</button>
+                            <button className="btn btn-primary" onClick={() => canAddTicket(childCount) && setChildCount(childCount + 1)}>+</button>
                             <span className="mx-2">{childCount}</span>
                             <button className="btn btn-primary" onClick={() => childCount > 0 && setChildCount(childCount - 1)}>-</button>
                         </div>
@@ -68,37 +74,12 @@ function TicketBookingPage() {
                     <div className="card-body">
                         <span>Senior (65+): $10</span>
                         <div>
-                            <button className="btn btn-primary" onClick={() => setSeniorCount(seniorCount + 1)}>+</button>
+                            <button className="btn btn-primary" onClick={() => canAddTicket(seniorCount) && setSeniorCount(seniorCount + 1)}>+</button>
                             <span className="mx-2">{seniorCount}</span>
                             <button className="btn btn-primary" onClick={() => seniorCount > 0 && setSeniorCount(seniorCount - 1)}>-</button>
                         </div>
                     </div>
                 </div>
-
-                {/*
-            <div className="mb-3">
-                <label>How many wheelchair seats will be required, if any?:</label>
-                <input
-                    type="number"
-                    className="form-control"
-                    value={wheelchairCount}
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        if (value === '') {
-                            setWheelchairCount(value);
-                        } else {
-                            const newValue = parseInt(value, 10);
-                            if (newValue >= 0 && newValue <= 40) {
-                                setWheelchairCount(newValue);
-                            }
-                        }
-                    }}
-                    placeholder="0, 1, 2, or more"
-                    min="0"
-                    max="40"
-                />
-            </div>
-                */}
 
                 <div className="mb-3">
                     <label className="label-text">Special Assistance:</label>
