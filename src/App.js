@@ -27,6 +27,8 @@ function App() {
     <Routes>
       <Route path="/" element={<TicketBookingPage />} />
       <Route path="/seat-booking" element={<SeatBookingPage />} />
+      <Route path="/payment" element={<PaymentPage />} />
+      <Route path="/credit-card" element={<CreditCardPage />} />
     </Routes>
   );
 

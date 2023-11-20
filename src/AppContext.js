@@ -13,6 +13,12 @@ export const AppProvider = ({ children }) => {
     const [childCount, setChildCount] = useState(0);
     const [seniorCount, setSeniorCount] = useState(0);
     const [specialAssistance, setSpecialAssistance] = useState('');
+    const [seatIDs, setSeatIDs] = useState([]);
+    const [promoCode, setPromoCode] = useState('');
+    const [discount, setDiscount] = useState(0);
+    const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
     
     // Add other shared states if needed
 
@@ -26,7 +32,13 @@ export const AppProvider = ({ children }) => {
             childCount, setChildCount,
             seniorCount, setSeniorCount,
             specialAssistance, setSpecialAssistance,
-            
+            seatIDs, setSeatIDs,
+            promoCode, setPromoCode,
+            discount, setDiscount,
+            email, setEmail,
+            phoneNumber, setPhoneNumber,
+            selectedPaymentMethod, setSelectedPaymentMethod
+
             // Provide other states here
         }}>
             {children}

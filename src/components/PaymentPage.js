@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import "../styles/PaymentPage.css";
@@ -7,16 +9,14 @@ import Modal from "../components/Modal.js";
 
 const PaymentPage = () => {
 
-    const [promoCode, setPromoCode] = useState('');
-    const [discount, setDiscount] = useState(0);
+    const { subtotal, promoCode, setPromoCode, discount, setDiscount, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod } = useAppContext();
+    
+    const navigate = useNavigate();
+
     const [promoError, setPromoError] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [email, setEmail] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
     const [inputError, setInputError] = useState('');
 
-    const subtotal = 22.00;
     const cleaningFee = 2.50;
     const calculateTax = (subtotal, discount) => 0.05 * (subtotal - discount);
     const [tax, setTax] = useState(calculateTax(subtotal, discount));
@@ -86,6 +86,11 @@ const PaymentPage = () => {
         setPromoError('');
     };
 
+    const handleCreditCardClick = () => {
+        selectPaymentMethod('Credit Card');
+        navigate('/credit-card');
+    };
+
     useEffect(() => {
         document.body.classList.add('payment-page-background');
 
@@ -116,12 +121,6 @@ const PaymentPage = () => {
                         <label>Payment Method:</label>
                         <div className="payment-methods mb-3">
                             <button
-                                className={getButtonClass('Credit Card')}
-                                onClick={() => selectPaymentMethod('Credit Card')}
-                            >
-                                Credit Card
-                            </button>
-                            <button
                                 className={getButtonClass('Apple Pay')}
                                 onClick={() => selectPaymentMethod('Apple Pay')}
                             >
@@ -132,6 +131,12 @@ const PaymentPage = () => {
                                 onClick={() => selectPaymentMethod('Google Pay')}
                             >
                                 Google Pay
+                            </button>
+                            <button
+                                className={getButtonClass('Credit Card')}
+                                onClick={handleCreditCardClick}
+                            >
+                                Credit Card (Visa and MasterCard)
                             </button>
                         </div>
 
@@ -168,7 +173,7 @@ const PaymentPage = () => {
                     <Button variant="primary" size="lg" className="payment-next-button" onClick={handleNextClick}>
                         Confirm
                     </Button>
-                    <Button variant="secondary" className="payment-back-button">
+                    <Button variant="secondary" className="payment-back-button" onClick={() => navigate(-1)}>
                         Back
                     </Button>
                 </div>

@@ -20,39 +20,54 @@ const Seat = ({ id, isBooked, isAccessible, isSelected, toggleBooking }) => {
 
 const SeatBookingPage = () => {
 
-    const { availableSeats, totalSeats, totalTickets } = useAppContext();
+    const { availableSeats, totalSeats, totalTickets, seatIDs, setSeatIDs } = useAppContext();
 
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
     const generateSeats = () => {
-        const seats = [];
-        for (let i = 1; i <= totalSeats; i++) {
-            seats.push({
-                id: `S${i}`,
-                isBooked: i > availableSeats,
-                isAccessible: ['S5', 'S6'].includes(`S${i}`), // Two accessible seats
-                isSelected: false
-            });
-        }
-        return seats;
+        return Array.from({ length: totalSeats }, (_, i) => {
+            const id = `S${i + 1}`;
+            return {
+                id: id,
+                isBooked: i >= availableSeats,
+                isAccessible: ['S5', 'S6'].includes(id),
+                isSelected: seatIDs.includes(id),
+            };
+        });
     };
 
     const [seats, setSeats] = useState(generateSeats);
 
-    const toggleBooking = (id) => {
-        const currentlySelected = seats.filter(seat => seat.isSelected).length;
+    useEffect(() => {
+        setSeats(generateSeats());
+    }, [seatIDs]);
 
-        if (currentlySelected < totalTickets || seats.find(seat => seat.id === id).isSelected) {
-            setSeats(
-                seats.map((seat) =>
-                    seat.id === id ? { ...seat, isSelected: !seat.isSelected } : seat
-                )
-            );
-        }
+    const toggleBooking = (id) => {
+        setSeats(seats.map((seat) => {
+            if (seat.id === id && !seat.isBooked) {
+                const isSelected = !seat.isSelected;
+                // Determine if adding or removing a seat
+                if (isSelected) {
+                    if (seatIDs.length < totalTickets) {
+                        setSeatIDs([...seatIDs, id]);
+                    } else {
+                        // Optionally, show a message that no more seats can be selected
+                        setModalMessage("You cannot select more seats than the number of tickets.");
+                        setShowModal(true);
+                        return seat; // Early return to prevent selecting more seats
+                    }
+                } else {
+                    const newSeatIDs = seatIDs.filter(seatID => seatID !== id);
+                    setSeatIDs(newSeatIDs);
+                }
+                return { ...seat, isSelected: isSelected };
+            }
+            return seat;
+        }));
     };
 
-    const hasSelectedSeats = seats.some(seat => seat.isSelected);
+    const hasSelectedSeats = seatIDs.length > 0;
 
     const navigate = useNavigate();
 
