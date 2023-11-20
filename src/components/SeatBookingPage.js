@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/SeatBookingPage.css";
 import Modal from "../components/Modal.js";
@@ -17,7 +18,9 @@ const Seat = ({ id, isBooked, isAccessible, isSelected, toggleBooking }) => {
     );
 };
 
-const SeatBookingPage = ({ totalSeats, availableSeats, selectedTickets }) => {
+const SeatBookingPage = () => {
+
+    const { availableSeats, totalSeats, totalTickets } = useAppContext();
 
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -40,7 +43,7 @@ const SeatBookingPage = ({ totalSeats, availableSeats, selectedTickets }) => {
     const toggleBooking = (id) => {
         const currentlySelected = seats.filter(seat => seat.isSelected).length;
 
-        if (currentlySelected < selectedTickets || seats.find(seat => seat.id === id).isSelected) {
+        if (currentlySelected < totalTickets || seats.find(seat => seat.id === id).isSelected) {
             setSeats(
                 seats.map((seat) =>
                     seat.id === id ? { ...seat, isSelected: !seat.isSelected } : seat
@@ -55,11 +58,12 @@ const SeatBookingPage = ({ totalSeats, availableSeats, selectedTickets }) => {
 
     const handleConfirmSeats = () => {
         const selectedSeatCount = seats.filter(seat => seat.isSelected).length;
-        if (selectedSeatCount !== selectedTickets) {
-            setModalMessage(`Please select exactly ${selectedTickets} seats.`);
+        if (selectedSeatCount !== totalTickets) {
+            setModalMessage(`Please select exactly ${totalTickets} seats.`);
             setShowModal(true);
             return;
         }
+        navigate('/payment');
     };
 
     useEffect(() => {

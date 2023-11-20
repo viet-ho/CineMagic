@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import "../styles/TicketBookingPage.css";
 import Modal from "../components/Modal.js";
 
-function TicketBookingPage({ availableSeats, setSelectedTickets }) {
-    const navigate = useNavigate();
+function TicketBookingPage() {
 
-    const [adultCount, setAdultCount] = useState(0);
-    const [childCount, setChildCount] = useState(0);
-    const [seniorCount, setSeniorCount] = useState(0);
-    const [specialAssistance, setSpecialAssistance] = useState('');
+    const { availableSeats,  adultCount, childCount, seniorCount, specialAssistance, setTotalTickets, setSubtotal, setAdultCount, setChildCount, setSeniorCount, setSpecialAssistance } = useAppContext();
+
+    const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
 
@@ -23,7 +22,8 @@ function TicketBookingPage({ availableSeats, setSelectedTickets }) {
             setModalMessage('Please add at least one ticket before confirming.');
             setShowModal(true);
         } else {
-            setSelectedTickets(totalTickets);
+            setTotalTickets(totalTickets);
+            setSubtotal(subtotal);
             navigate('/seat-booking');
         }
     };

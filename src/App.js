@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import { Route, Routes } from 'react-router-dom';
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/Homepage";
@@ -24,21 +23,13 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
 
-
-
-  {/*}
-  const totalSeats = 60;
-  const availableSeats = 48;
-  const [selectedTickets, setSelectedTickets] = useState(0);
-
   return (
     <Routes>
-      <Route path="/" element={<TicketBookingPage availableSeats={availableSeats} setSelectedTickets={setSelectedTickets} />} />
-      <Route path="/seat-booking" element={<SeatBookingPage totalSeats={totalSeats} availableSeats={availableSeats} selectedTickets={selectedTickets} />} />
+      <Route path="/" element={<TicketBookingPage />} />
+      <Route path="/seat-booking" element={<SeatBookingPage />} />
     </Routes>
   );
-  */}
-  
+
 
 }
 
