@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import logo from "./logo.svg";
@@ -24,14 +24,17 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
 
-  {/*
+
+
+  {/*}
   const totalSeats = 60;
   const availableSeats = 48;
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   return (
     <Routes>
-      <Route path="/" element={<TicketBookingPage availableSeats={availableSeats} />} />
-      <Route path="/seat-booking" element={<SeatBookingPage totalSeats={totalSeats} availableSeats={availableSeats} selectedTickets={4} />} />
+      <Route path="/" element={<TicketBookingPage availableSeats={availableSeats} setSelectedTickets={setSelectedTickets} />} />
+      <Route path="/seat-booking" element={<SeatBookingPage totalSeats={totalSeats} availableSeats={availableSeats} selectedTickets={selectedTickets} />} />
     </Routes>
   );
   */}

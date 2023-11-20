@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import "../styles/TicketBookingPage.css";
 import Modal from "../components/Modal.js";
 
-function TicketBookingPage({ availableSeats }) {
+function TicketBookingPage({ availableSeats, setSelectedTickets }) {
     const navigate = useNavigate();
 
     const [adultCount, setAdultCount] = useState(0);
@@ -23,7 +23,8 @@ function TicketBookingPage({ availableSeats }) {
             setModalMessage('Please add at least one ticket before confirming.');
             setShowModal(true);
         } else {
-            navigate(`/seat-booking?tickets=${totalTickets}`);
+            setSelectedTickets(totalTickets);
+            navigate('/seat-booking');
         }
     };
 
