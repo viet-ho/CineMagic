@@ -1,21 +1,31 @@
 /* Homepage.css */
+body.homepage-page-background {
+  background-color: #F4F3F2;
+}
 
 .home-page {
     font-family: 'Arial', sans-serif; 
   }
   
   .hero-section {
-    background-color: #000;
+    background-color: #1B1212;
     color: #fff;
     text-align: center;
-    padding: 40px;
+    margin-top: -50px;
+    padding-top: 1px;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-bottom: 1%;
   }
   
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5%;
+    margin-top: 0%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 1%;
   }
   
   .left-info {
@@ -45,6 +55,7 @@
   .title {
     font-weight: bold;
     font-size: 72px;
+    margin: 0;
   }
   
   p {
@@ -58,7 +69,7 @@
   }
   
   .cta-button {
-    background-color: #ff5722;
+    background-color: #FF7F50;
     color: #fff;
     font-size: 24px;
     font-weight: bold;
@@ -114,7 +125,6 @@
   }
   
   .review-text {
-    color: blue;
     margin-top: 8px;
   }
   
@@ -147,7 +157,7 @@
   .movie-news-title {
     color: #333;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 40px;
     margin-top: 5%;
     margin-bottom: 1%;
   }
@@ -161,34 +171,39 @@
     }
   
   
-  .movie-article-card {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    .movie-article-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #f5f5f5;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 75%;
+      height: 500px;
     }
-
-  .movie-article-card img {
-    width: 100%;
-    height: 250px;
-    border-radius: 20px;
-  }
-
-  .articles {
-    width: 500px;
-  }
+    
+    .movie-article-card img {
+      width: 100%;
+      height: 250px;
+      border-radius: 20px;
+    }
+    
+    .articles {
+      width: 500px;
+    }
+    
   
   .movie-news-description {
-    color: blue;
     margin-top: 8px;
+    margin-bottom: 50px;
   }
 
   .footer {
-    background-color: #f0f0f0; 
+    background-color: #D1D0CE; 
     text-align: center; 
     padding: 10px; 
     margin-top: 5%; 

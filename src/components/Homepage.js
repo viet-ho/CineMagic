@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import movieCard1 from "../assets/Movie1.jpg";
 import movieCard2 from "../assets/Movie2.jpeg";
 import movieCard3 from "../assets/Movie3.jpg";
@@ -71,6 +71,24 @@ const HomePage = () => {
     slidesToScroll: 1,
   };
 
+  useEffect(() => {
+    document.body.classList.add("homepage-page-background");
+
+    return () => {
+      document.body.classList.remove("homepage-page-background");
+    };
+  }, []);
+
+  const handleGetTicketsClick = () => {
+    const carouselSection = document.getElementById("carousel-section");
+    if (carouselSection) {
+      window.scrollTo({
+        top: carouselSection.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="home-page">
       <div className="hero-section">
@@ -128,10 +146,12 @@ const HomePage = () => {
             <img src={theatre} className="theatre-picture" />
           </section>
         </div>
-        <button className="cta-button">Get Tickets</button>
+        <button className="cta-button" onClick={handleGetTicketsClick}>
+          Get Tickets
+        </button>
       </div>
 
-      <section className="featured-movies">
+      <section id="carousel-section" className="featured-movies">
         <h2 className="featured-movie-title">Featured Movies</h2>
         <p>
           <i>Browse our list of currently airing films!</i>

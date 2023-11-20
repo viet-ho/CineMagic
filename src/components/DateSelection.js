@@ -40,10 +40,10 @@ const DateSelection = () => {
   };
 
   useEffect(() => {
-    document.body.classList.add('date-selection');
+    document.body.classList.add("date-selection");
 
     return () => {
-      document.body.classList.remove('date-selection');
+      document.body.classList.remove("date-selection");
     };
   }, []);
 

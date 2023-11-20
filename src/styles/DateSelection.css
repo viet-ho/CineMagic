@@ -38,6 +38,13 @@ body.date-selection {
   background-color: #ffa000;
 }
 
+.orange-button.disabled {
+  background-color: #ddd;
+  color: #777;
+  cursor: not-allowed;
+}
+
+
 .confirm-button {
   background-color: #ddd;
   color: #777;
@@ -50,18 +57,20 @@ body.date-selection {
   outline: none;
 }
 
-.showtime-dates
-{
-  font-size: 24px !important;
-}
-
-.orange-button.disabled {
-  background-color: #ddd;
-  color: #777;
-  cursor: not-allowed;
-}
 .confirm-button:disabled {
   background-color: #ddd;
   color: #777;
   cursor: not-allowed;
 }
+
+.confirm-button:not(:disabled) {
+  background-color: #ff5722;
+  color: #fff;
+  cursor: pointer;
+}
+
+.showtime-dates
+{
+  font-size: 24px !important;
+}
+

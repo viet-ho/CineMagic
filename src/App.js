@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/Homepage";
@@ -23,7 +23,8 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
 
-  {/*
+  {
+    /*
   return (
     <Routes>
       <Route path="/" element={<TicketBookingPage />} />
@@ -33,8 +34,8 @@ function App() {
       <Route path="/confirmation-page" element={<ConfirmationPage />} />
     </Routes>
   );
-  */}
-
+  */
+  }
 }
 
 export default App;
