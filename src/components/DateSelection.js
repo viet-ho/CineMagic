@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
 import "../styles/DateSelection.css";
 
+
 const DateSelection = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [selectedShowtime, setSelectedShowtime] = useState(null);
@@ -47,53 +48,57 @@ const DateSelection = () => {
     };
   }, []);
 
-  return (
-    <div className="date-selection">
-      <h1>🎥 Selected Movie: Indie Movie</h1>
+  // ... (rest of your component code)
+
+return (
+  <div className="date-selection white-container"> {/* Add white-container class here */}
+    <h1>🎥 Selected Movie: Indie Movie</h1>
+    <p>
+      <i>Click on the date selector box to change the showtime date.</i>
+    </p>
+    <section>
       <p>
-        <i>Click on the date selector box to change the showtime date.</i>
+        <strong className="showtime-dates">Showtimes on </strong>
+        <DatePicker
+          showIcon
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          minDate={new Date()}
+          maxDate={addDays(new Date(), 7)}
+          placeholderText="See movies within the next 7 days"
+        />
+        <strong className="showtime-dates"> :</strong>
       </p>
-      <section>
-        <p>
-          <strong className="showtime-dates">Showtimes on </strong>
-          <DatePicker
-            showIcon
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            minDate={new Date()}
-            maxDate={addDays(new Date(), 7)}
-            placeholderText="See movies within the next 7 days"
-          />
-          <strong className="showtime-dates"> :</strong>
-        </p>
-        <div className="button-container">
-          {showtimes.map(({ time, disabled }, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`orange-button ${
-                selectedShowtime === time ? "selected" : ""
-              }${disabled ? " disabled" : ""}`}
-              onClick={() => handleShowtimeSelect(time, disabled)}
-              disabled={disabled}
-            >
-              {time}
-            </button>
-          ))}
-        </div>
-      </section>
-      <section>
-        <button
-          type="button"
-          className="confirm-button"
-          onClick={handleConfirmShowtime}
-          disabled={isConfirmDisabled}
-        >
-          Confirm Showtime
-        </button>
-      </section>
-    </div>
-  );
-};
+      <div className="button-container">
+        {showtimes.map(({ time, disabled }, index) => (
+          <button
+            key={index}
+            type="button"
+            className={`orange-button ${
+              selectedShowtime === time ? "selected" : ""
+            }${disabled ? " disabled" : ""}`}
+            onClick={() => handleShowtimeSelect(time, disabled)}
+            disabled={disabled}
+          >
+            {time}
+          </button>
+        ))}
+      </div>
+    </section>
+    <section>
+      <button
+        type="button"
+        className="confirm-button"
+        onClick={handleConfirmShowtime}
+        disabled={isConfirmDisabled}
+      >
+        Confirm Showtime
+      </button>
+    </section>
+  </div>
+)};
+
+
+
 
 export default DateSelection;
