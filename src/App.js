@@ -11,8 +11,8 @@ import SummaryPage from "./components/SummaryPage";
 import MovieInfo from "./components/MovieInfo";
 
 function App() {
-  return <DateSelection></DateSelection>;
-  //return <MovieInfo></MovieInfo>;
+  //return <DateSelection></DateSelection>;
+  return <MovieInfo></MovieInfo>;
   //return <HomePage></HomePage>;
   //return <ReviewsPage></ReviewsPage>;
   //return <SeatBookingPage></SeatBookingPage>;

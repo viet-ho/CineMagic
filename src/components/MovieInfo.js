@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import movieCard2 from "../assets/Movie2.jpeg";
 import MovieTrailerModal from "./MovieTrailerModal";
 import "../styles/MovieInfo.css";
 
 const MovieInfo = () => {
   const movieData = {
     name: "Indie Movie",
-    titleCard: "/path/to/titleCard.jpg",
+    titleCard: movieCard2,
     trailerUrl: "https://www.youtube.com/embed/example-trailer",
     description: "A brief description of the movie.",
   };
@@ -21,7 +22,7 @@ const MovieInfo = () => {
   };
 
   return (
-    <div className="summary-page">
+    <div className="summary-page white-container">
       <h1>{movieData.name}</h1>
       <img src={movieData.titleCard} alt="Title Card" />
       <button onClick={handleShowTrailer}>Watch Trailer</button>
