@@ -53,7 +53,7 @@ const SeatBookingPage = () => {
                         setSeatIDs([...seatIDs, id]);
                     } else {
                         // Optionally, show a message that no more seats can be selected
-                        setModalMessage("You cannot select more seats than the number of tickets.");
+                        setModalMessage("You cannot select more seats than the number of tickets you added.");
                         setShowModal(true);
                         return seat; // Early return to prevent selecting more seats
                     }
@@ -74,7 +74,7 @@ const SeatBookingPage = () => {
     const handleConfirmSeats = () => {
         const selectedSeatCount = seats.filter(seat => seat.isSelected).length;
         if (selectedSeatCount !== totalTickets) {
-            setModalMessage(`Please select exactly ${totalTickets} seats.`);
+            setModalMessage(`Please select exactly ${totalTickets} seats which are the number of tickets you added.`);
             setShowModal(true);
             return;
         }

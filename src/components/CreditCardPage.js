@@ -38,15 +38,15 @@ const CreditCardPage = () => {
 
         // Validation checks
         if (!cardNumberRegex.test(cardDetails.cardNumber)) {
-            setModalMessage("Please enter a valid 16-digit credit card number.");
+            setModalMessage("Please enter a valid 16-digit credit card number (e.g. 1234567891234567).");
         } else if (!cardDetails.cardName.trim()) {
             setModalMessage("Please enter the name on the card.");
         } else if (!expiryRegex.test(cardDetails.expiry)) {
             setModalMessage("Please enter a valid expiry date in MM/YY format.");
         } else if (!cvvRegex.test(cardDetails.cvv)) {
-            setModalMessage("Please enter a valid 3-digit CVV.");
+            setModalMessage("Please enter a valid 3-digit CVV (e.g. 123).");
         } else if (!postalCodeRegex.test(cardDetails.postalCode)) {
-            setModalMessage("Please enter a valid postal code (for example: T2N 1N4).");
+            setModalMessage("Please enter a valid postal code (e.g. T2N 1N4).");
         } else {
             console.log(cardDetails);
             navigate(-1);
@@ -88,7 +88,7 @@ const CreditCardPage = () => {
                                 value={cardDetails.cardNumber}
                                 onChange={handleChange}
                                 maxLength={16}
-                                placeholder="Enter credit card number"
+                                placeholder="Enter 16-digit credit card number"
                             />
                         </div>
                         <div className="form-group mb-3">
@@ -134,7 +134,7 @@ const CreditCardPage = () => {
                                 name="postalCode"
                                 value={cardDetails.postalCode}
                                 onChange={handleChange}
-                                placeholder="Enter postal code (T2N 1N4)"
+                                placeholder="Enter postal code (e.g. T2N 1N4)"
                                 maxLength={7}
                             />
                         </div>
