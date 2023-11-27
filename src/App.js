@@ -11,6 +11,7 @@ import TicketBookingPage from "./components/TicketBookingPage";
 import CreditCardPage from "./components/CreditCardPage";
 import ConfirmationPage from "./components/ConfirmationPage";
 import MovieInfo from "./components/MovieInfo";
+import LoginPage from "./components/LoginPage";
 
 function App() {
   //return <DateSelection></DateSelection>;
@@ -21,6 +22,8 @@ function App() {
   //return <TicketBookingPage availableSeats={30} />;
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
+  //return <LoginPage></LoginPage>;
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -34,6 +37,7 @@ function App() {
       <Route path="/confirmation-page" element={<ConfirmationPage />} />
     </Routes>
   );
+
 }
 
 export default App;

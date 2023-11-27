@@ -100,7 +100,7 @@ function TicketBookingPage() {
                     <Button variant="primary" className="ticket-confirm-button" onClick={handleConfirmTickets}>
                         Confirm Ticket(s)
                     </Button>
-                    <Button variant="secondary" className="ticket-back-button">
+                    <Button variant="secondary" className="ticket-back-button" onClick={() => navigate(-1)}>
                         Back
                     </Button>
                 </div>

@@ -29,6 +29,8 @@ export const AppProvider = ({ children }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [validUsername, setValidUsername] = useState("abc@gmail.com");
+  const [validPassword, setValidPassword] = useState("@Abcd1234");
 
   // Add other shared states if needed
 
@@ -88,6 +90,10 @@ export const AppProvider = ({ children }) => {
         setSelectedPaymentMethod,
         tax,
         total,
+        validUsername,
+        setValidUsername,
+        validPassword,
+        setValidPassword,
 
         // Provide other states here
       }}
