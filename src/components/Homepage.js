@@ -12,12 +12,23 @@ import Item from "./Item";
 import ReactModal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
+import MovieNewsModal from "./MovieNewsModal";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const { setTitle, setImage, setTrailer, setDescription, setReview } =
+  const { setTitle, setImage, setTrailer, setDescription, setReview, setNewsImage, setNewsTitle, setNewsDescription } =
     useAppContext();
   const [isOpen, setIsOpen] = useState(false);
+
+  const [showNews, setShowNews] = useState(false);
+
+  const handleShowNews = () => {
+    setShowNews(true);
+  };
+
+  const handleCloseNews = () => {
+    setShowNews(false);
+  };
 
   const featuredMovies = [
     {
@@ -247,18 +258,24 @@ const HomePage = () => {
       title: "Tom Hanks Stars in Indieana Jones",
       description:
         "Tom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones...",
+      descriptionLong: "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
     },
     {
       img: movieCard2,
       title: "2024 Indie Awards",
       description:
         "The 2024 Indie Awards will be taking place in Winnipeg, Manitoba this year...",
+      descriptionLong: "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
+
+        
     },
     {
       img: movieCard3,
       title: "Despicable Indie Rocks Box Office",
       description:
         "Earning a staggering $5.5 million USD, Despicable Indie has taken the indie market by storm...",
+      descriptionLong: "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
+
     },
   ];
 
@@ -368,7 +385,7 @@ const HomePage = () => {
                 navigate("/movie-info");
               }}
             >
-              <div className="movie-card" onClick={() => setIsOpen(true)}>
+              <div className="movie-card" onClick={() => {setIsOpen(true)}}>
                 <img
                   src={movie.img}
                   alt={movie.title}
@@ -394,7 +411,13 @@ const HomePage = () => {
 
       <section className="movie-news">
         {movieNews.map((movie, index) => (
-          <Item className="articles" key={index}>
+          <Item className="articles" key={index} onClick={() => {
+          handleShowNews();
+          setNewsDescription(movie.descriptionLong);
+          setNewsImage(movie.img);
+          setNewsTitle(movie.title);
+          }
+          }>
             <div className="movie-article-card">
               <img
                 src={movie.img}
@@ -408,6 +431,11 @@ const HomePage = () => {
             </div>
           </Item>
         ))}
+        {showNews && (
+        <MovieNewsModal
+          onClose={handleCloseNews}
+        />
+      )}
       </section>
 
       <footer className="footer">

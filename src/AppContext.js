@@ -12,6 +12,9 @@ export const AppProvider = ({ children }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [image, setImage] = useState("");
+  const [newsTitle, setNewsTitle] = useState("");
+  const [newsDescription, setNewsDescription] = useState("");
+  const [newsImage, setNewsImage] = useState("");
   const [trailer, setTrailer] = useState("");
   const [description, setDescription] = useState("");
   const [review, setReview] = useState([]);
@@ -58,6 +61,12 @@ export const AppProvider = ({ children }) => {
         setTime,
         image,
         setImage,
+        newsImage,
+        setNewsImage,
+        newsDescription,
+        setNewsDescription,
+        newsTitle,
+        setNewsTitle,
         trailer,
         setTrailer,
         description,

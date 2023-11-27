@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../styles/MovieTrailerModal.css";
+import { useAppContext } from '../AppContext';
+
 
 const MovieTrailerModal = ({ trailerUrl, onClose }) => {
   return (
