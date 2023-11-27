@@ -22,12 +22,8 @@ function App() {
   //return <TicketBookingPage availableSeats={30} />;
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
-<<<<<<< Updated upstream
-=======
-  return <LoginPage></LoginPage>;
+  //return <LoginPage></LoginPage>;
 
-{/*
->>>>>>> Stashed changes
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -41,11 +37,7 @@ function App() {
       <Route path="/confirmation-page" element={<ConfirmationPage />} />
     </Routes>
   );
-<<<<<<< Updated upstream
-=======
-  */}
 
->>>>>>> Stashed changes
 }
 
 export default App;
