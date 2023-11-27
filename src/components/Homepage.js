@@ -375,7 +375,7 @@ const HomePage = () => {
                   className="movie-poster"
                 />
                 <h3 className="featured-movie">{movie.title}</h3>
-                <p className="review-text">
+                <p className="review-text-homepage">
                   {" "}
                   <i>Quick Rating: {movie.rating}</i>
                 </p>
