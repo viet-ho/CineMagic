@@ -22,6 +22,10 @@ const DateSelection = () => {
     { time: "11:30PM", disabled: false },
   ]);
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     const greyedOutShowtimes = Array.from({ length: 2 }, () =>
       Math.floor(Math.random() * showtimes.length)
@@ -102,6 +106,9 @@ const DateSelection = () => {
           Confirm Showtime
         </button>
       </section>
+      <button className="back-button-date-selection" onClick={handleBack}>
+        Back
+      </button>
     </div>
   );
 };

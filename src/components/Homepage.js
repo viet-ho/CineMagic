@@ -299,11 +299,11 @@ const HomePage = () => {
             <p className="subtitle">
               <TypeAnimation
                 sequence={[
-                  "Where Every Frame Tells a Tale",
+                  "Frames Tells a Tale",
                   1000,
-                  "Unleash the Power of Indie",
+                  "The Power of Indie",
                   1000,
-                  "Your Path to Cinematic Wonders.",
+                  "Cinematic Wonders",
                   1000,
                   "Experience Movie Magic",
                   1000,
