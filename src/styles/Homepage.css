@@ -11,8 +11,7 @@ body.homepage-page-background {
     background-color: #1B1212;
     color: #fff;
     text-align: center;
-    margin-top: -50px;
-    padding-top: 1px;
+    padding-top: 50px;
     padding-left: 4%;
     padding-right: 4%;
     padding-bottom: 1%;
@@ -22,7 +21,7 @@ body.homepage-page-background {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 0%;
+    margin-top: 5%;
     margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 1%;

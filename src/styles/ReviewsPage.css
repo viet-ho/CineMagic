@@ -1,5 +1,5 @@
 body.reviews-page-background {
-  background-color: #000;
+  background-color: #FF7F50;
 }
 
 .reviews-page-height {
@@ -126,8 +126,9 @@ body.reviews-page-background {
 
 .reviews-page .movie-poster {
   display: block;
-  width: 120px;
-  height: auto;
+  height: 150px;
+  height: 150px;
+  border-radius: 20px;
   margin: 0 auto 20px;
 }
 

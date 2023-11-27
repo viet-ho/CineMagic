@@ -10,7 +10,11 @@ export const AppProvider = ({ children }) => {
   const cleaningFee = 2.5;
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [image, setImage] = useState("");
+  const [trailer, setTrailer] = useState("");
+  const [description, setDescription] = useState("");
+  const [review, setReview] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [totalTickets, setTotalTickets] = useState(0);
   const [adultCount, setAdultCount] = useState(0);
@@ -48,8 +52,16 @@ export const AppProvider = ({ children }) => {
         setTitle,
         date,
         setDate,
+        time,
+        setTime,
         image,
         setImage,
+        trailer,
+        setTrailer,
+        description,
+        setDescription,
+        review,
+        setReview,
         subtotal,
         setSubtotal,
         totalTickets,

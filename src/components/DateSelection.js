@@ -3,8 +3,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from "date-fns";
 import "../styles/DateSelection.css";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../AppContext";
 
 const DateSelection = () => {
+  const { setDate, setTime } = useAppContext();
+  const navigate = useNavigate();
+
   const [startDate, setStartDate] = useState(new Date());
   const [selectedShowtime, setSelectedShowtime] = useState(null);
   const [isConfirmDisabled, setConfirmDisabled] = useState(true);
@@ -37,6 +42,7 @@ const DateSelection = () => {
 
   const handleConfirmShowtime = () => {
     alert(`Showtime confirmed: ${selectedShowtime}`);
+    navigate("/ticket-selection");
   };
 
   useEffect(() => {
@@ -86,7 +92,11 @@ const DateSelection = () => {
         <button
           type="button"
           className="confirm-button"
-          onClick={handleConfirmShowtime}
+          onClick={() => {
+            setDate(startDate);
+            setTime(selectedShowtime);
+            handleConfirmShowtime();
+          }}
           disabled={isConfirmDisabled}
         >
           Confirm Showtime

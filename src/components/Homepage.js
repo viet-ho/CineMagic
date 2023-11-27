@@ -10,8 +10,13 @@ import "../styles/Homepage.css";
 import Carousel from "react-elastic-carousel";
 import Item from "./Item";
 import ReactModal from "react-modal";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../AppContext";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const { setTitle, setImage, setTrailer, setDescription, setReview } =
+    useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
   const featuredMovies = [
@@ -19,26 +24,220 @@ const HomePage = () => {
       img: movieCard1,
       title: "Indie Greg Heffley",
       rating: "4.3/5",
+      trailer: "https://www.youtube.com/embed/example-trailer",
+      description: "A brief description of the movie.",
+      reviews: [
+        {
+          id: 2,
+          name: "Vikram C.",
+          rating: 3,
+          text: "This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.",
+        },
+        {
+          id: 3,
+          name: "Ekhonmu E.",
+          rating: 4,
+          text: "A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.",
+        },
+        {
+          id: 4,
+          name: "Jordan C.",
+          rating: 4,
+          text: "A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.",
+        },
+        {
+          id: 5,
+          name: "Jane Doe",
+          rating: 5,
+          text: "An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.",
+        },
+        {
+          id: 6,
+          name: "Vincent H.",
+          rating: 2,
+          text: "Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.",
+        },
+      ],
     },
     {
       img: movieCard2,
       title: "Despicable Indie",
       rating: "2.3/5",
+      trailer: "",
+      description: "",
+      reviews: [
+        {
+          id: 1,
+          name: "Harry M.",
+          rating: 5,
+          text: "Absolutely stunning! The cinematography and special effects in this film were nothing short of mind-blowing, perfectly complementing a riveting and well-crafted storyline. The characters were richly developed, drawing the audience deeply into their world.",
+        },
+        {
+          id: 2,
+          name: "Vikram C.",
+          rating: 3,
+          text: "This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.",
+        },
+        {
+          id: 3,
+          name: "Ekhonmu E.",
+          rating: 4,
+          text: "A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.",
+        },
+        {
+          id: 4,
+          name: "Jordan C.",
+          rating: 4,
+          text: "A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.",
+        },
+        {
+          id: 5,
+          name: "Jane Doe",
+          rating: 5,
+          text: "An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.",
+        },
+        {
+          id: 6,
+          name: "Vincent H.",
+          rating: 2,
+          text: "Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.",
+        },
+      ],
     },
     {
       img: movieCard3,
       title: "Indieana Jones",
       rating: "4.6/5",
+      trailer: "",
+      description: "",
+      reviews: [
+        {
+          id: 1,
+          name: "Harry M.",
+          rating: 5,
+          text: "Absolutely stunning! The cinematography and special effects in this film were nothing short of mind-blowing, perfectly complementing a riveting and well-crafted storyline. The characters were richly developed, drawing the audience deeply into their world.",
+        },
+        {
+          id: 2,
+          name: "Vikram C.",
+          rating: 3,
+          text: "This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.",
+        },
+        {
+          id: 3,
+          name: "Ekhonmu E.",
+          rating: 4,
+          text: "A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.",
+        },
+        {
+          id: 4,
+          name: "Jordan C.",
+          rating: 4,
+          text: "A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.",
+        },
+        {
+          id: 5,
+          name: "Jane Doe",
+          rating: 5,
+          text: "An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.",
+        },
+        {
+          id: 6,
+          name: "Vincent H.",
+          rating: 2,
+          text: "Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.",
+        },
+      ],
     },
     {
       img: movieCard4,
       title: "Wolf of Indie Street",
       rating: "4.9/5",
+      trailer: "",
+      description: "",
+      reviews: [
+        {
+          id: 1,
+          name: "Harry M.",
+          rating: 5,
+          text: "Absolutely stunning! The cinematography and special effects in this film were nothing short of mind-blowing, perfectly complementing a riveting and well-crafted storyline. The characters were richly developed, drawing the audience deeply into their world.",
+        },
+        {
+          id: 2,
+          name: "Vikram C.",
+          rating: 3,
+          text: "This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.",
+        },
+        {
+          id: 3,
+          name: "Ekhonmu E.",
+          rating: 4,
+          text: "A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.",
+        },
+        {
+          id: 4,
+          name: "Jordan C.",
+          rating: 4,
+          text: "A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.",
+        },
+        {
+          id: 5,
+          name: "Jane Doe",
+          rating: 5,
+          text: "An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.",
+        },
+        {
+          id: 6,
+          name: "Vincent H.",
+          rating: 2,
+          text: "Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.",
+        },
+      ],
     },
     {
       img: movieCard5,
       title: "Indie Movie",
       rating: "3.5/5",
+      trailer: "",
+      description: "",
+      reviews: [
+        {
+          id: 1,
+          name: "Harry M.",
+          rating: 5,
+          text: "Absolutely stunning! The cinematography and special effects in this film were nothing short of mind-blowing, perfectly complementing a riveting and well-crafted storyline. The characters were richly developed, drawing the audience deeply into their world.",
+        },
+        {
+          id: 2,
+          name: "Vikram C.",
+          rating: 3,
+          text: "This movie was confusing and disjointed, trying to tackle too many themes at once. The result was a plot that was hard to follow and ultimately unsatisfying. It seemed like the filmmakers could not decide on a clear direction, leaving the audience lost and disconnected.",
+        },
+        {
+          id: 3,
+          name: "Ekhonmu E.",
+          rating: 4,
+          text: "A delightful surprise from start to finish! This movie masterfully blended humor with heartfelt moments, striking a perfect balance that kept me both laughing and deeply invested in the characters journeys. It is rare to find a film that can tug at your heartstrings while keeping a smile on your face.",
+        },
+        {
+          id: 4,
+          name: "Jordan C.",
+          rating: 4,
+          text: "A bit of a letdown, unfortunately. While the concept was promising, the plot turned out to be quite predictable, and the acting did not quite hit the mark. It felt like a missed opportunity, especially considering the potential the initial trailers showed.",
+        },
+        {
+          id: 5,
+          name: "Jane Doe",
+          rating: 5,
+          text: "An instant classic in my book! The performances were simply outstanding, each actor bringing depth and nuance to their roles. The direction was equally superb, weaving a story that was both deeply moving and visually stunning. It is a film that will stay with me for a long time.",
+        },
+        {
+          id: 6,
+          name: "Vincent H.",
+          rating: 2,
+          text: "Mediocre at best, which was disappointing. The film suffered from significant pacing issues and a script that lacked depth and originality. I found myself checking my watch more than once, which is never a good sign for any movie.",
+        },
+      ],
     },
   ];
 
@@ -158,7 +357,17 @@ const HomePage = () => {
         </p>
         <Carousel className="carousel" itemsToShow={3}>
           {featuredMovies.map((movie, index) => (
-            <Item key={index}>
+            <Item
+              key={index}
+              onClick={() => {
+                setImage(movie.img);
+                setTitle(movie.title);
+                setDescription(movie.description);
+                setTrailer(movie.trailer);
+                setReview(movie.reviews);
+                navigate("/movie-info");
+              }}
+            >
               <div className="movie-card" onClick={() => setIsOpen(true)}>
                 <img
                   src={movie.img}
@@ -186,7 +395,7 @@ const HomePage = () => {
       <section className="movie-news">
         {movieNews.map((movie, index) => (
           <Item className="articles" key={index}>
-            <div className="movie-article-card" onClick={() => setIsOpen(true)}>
+            <div className="movie-article-card">
               <img
                 src={movie.img}
                 alt={movie.title}

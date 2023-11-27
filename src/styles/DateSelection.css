@@ -4,6 +4,7 @@ body.date-selection {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-color: #ff7f50; 
 }
 
 .date-selection {
@@ -11,6 +12,10 @@ body.date-selection {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #fff; 
+  padding: 20px; 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .date-selection h1 {
@@ -44,7 +49,6 @@ body.date-selection {
   cursor: not-allowed;
 }
 
-
 .confirm-button {
   background-color: #ddd;
   color: #777;
@@ -69,8 +73,6 @@ body.date-selection {
   cursor: pointer;
 }
 
-.showtime-dates
-{
+.showtime-dates {
   font-size: 24px !important;
 }
-
