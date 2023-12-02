@@ -40,39 +40,40 @@ const MovieInfo = () => {
   }, []);
 
   return (
-    <div className="movie-info-page white-container">
-      <h1 className="movie-info-title">{movieData.name}</h1>
-      <img
-        className="movie-info-image"
-        src={movieData.titleCard}
-        alt="Title Card"
-      />
-      <p>{movieData.description}</p>
+    <div>
+      <div className="movie-info-page white-container">
+        <h1 className="movie-info-title">{movieData.name}</h1>
+        <img
+          className="movie-info-image"
+          src={movieData.titleCard}
+          alt="Title Card"
+        />
+        <p>{movieData.description}</p>
 
-      <div className="movie-info-buttons">
-        <button className="movie-info-button" onClick={handleShowTrailer}>
-          Watch Trailer
-        </button>
+        <div className="movie-info-buttons">
+          <button className="movie-info-button" onClick={handleShowTrailer}>
+            Watch Trailer
+          </button>
+          <button
+            className="movie-info-button"
+            onClick={() => navigate("/reviews")}
+          >
+            Read Reviews
+          </button>
+        </div>
+        {showTrailer && (
+          <MovieTrailerModal
+            trailerUrl={movieData.trailerUrl}
+            onClose={handleCloseTrailer}
+          />
+        )}
         <button
           className="movie-info-button"
-          onClick={() => navigate("/reviews")}
+          onClick={() => navigate("/date-selection")}
         >
-          Read Reviews
+          Show Showtimes
         </button>
       </div>
-      {showTrailer && (
-        <MovieTrailerModal
-          trailerUrl={movieData.trailerUrl}
-          onClose={handleCloseTrailer}
-        />
-      )}
-      <button
-        className="movie-info-button"
-        onClick={() => navigate("/date-selection")}
-      >
-        Show Showtimes
-      </button>
-
       <button className="back-button-movie-info" onClick={handleBack}>
         Back
       </button>
