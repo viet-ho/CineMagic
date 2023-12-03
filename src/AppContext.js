@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [image, setImage] = useState("");
+  const [moreInfo, setMoreInfo] = useState("");
   const [newsTitle, setNewsTitle] = useState("");
   const [newsDescription, setNewsDescription] = useState("");
   const [newsImage, setNewsImage] = useState("");
@@ -61,6 +62,8 @@ export const AppProvider = ({ children }) => {
         setTime,
         image,
         setImage,
+        moreInfo,
+        setMoreInfo,
         newsImage,
         setNewsImage,
         newsDescription,

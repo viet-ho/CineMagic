@@ -42,7 +42,7 @@ const HomePage = () => {
     {
       img: movieCard1,
       title: "Indie Greg Heffley",
-      rating: "4.3/5",
+      otherInfo: "Length: 2h 37min || Age-Rating: PG-13",
       trailer: "https://www.youtube.com/embed/example-trailer",
       description: "A brief description of the movie.",
       reviews: [
@@ -81,7 +81,7 @@ const HomePage = () => {
     {
       img: movieCard2,
       title: "Despicable Indie",
-      rating: "2.3/5",
+      otherInfo: "Length: 1h 45min / Age-Rating: PG-13",
       trailer: "",
       description: "",
       reviews: [
@@ -126,7 +126,7 @@ const HomePage = () => {
     {
       img: movieCard3,
       title: "Indieana Jones",
-      rating: "4.6/5",
+      otherInfo: "Length: 3h 45min / Age-Rating: R",
       trailer: "",
       description: "",
       reviews: [
@@ -171,7 +171,7 @@ const HomePage = () => {
     {
       img: movieCard4,
       title: "Wolf of Indie Street",
-      rating: "4.9/5",
+      otherInfo: "Length: 2h 10min / Age-Rating: PG",
       trailer: "",
       description: "",
       reviews: [
@@ -216,7 +216,7 @@ const HomePage = () => {
     {
       img: movieCard5,
       title: "Indie Movie",
-      rating: "3.5/5",
+      otherInfo: "Length: 1h 45min / Age-Rating: PG",
       trailer: "",
       description: "",
       reviews: [
@@ -407,7 +407,7 @@ const HomePage = () => {
                 <h3 className="featured-movie">{movie.title}</h3>
                 <p className="review-text-homepage">
                   {" "}
-                  <i>Quick Rating: {movie.rating}</i>
+                  <i>{movie.otherInfo}</i>
                 </p>
               </div>
             </Item>

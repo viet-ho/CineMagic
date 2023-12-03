@@ -6,7 +6,9 @@
     justify-content: space-between !important;
     position: sticky !important;
     top: 0 !important;
-    z-index: 1000 !important; /* Ensure a higher z-index value */
+    z-index: 1000 !important; 
+    background: transparent;
+    backdrop-filter: blur(10px);
   }
   
   .navbar-left,
