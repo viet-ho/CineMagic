@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../AppContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/LoginPage.css";
@@ -7,6 +8,9 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Modal from "../components/Modal.js";
 
 const LoginPage = () => {
+
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [passwordShown, setPasswordShown] = useState(false);
@@ -20,7 +24,7 @@ const LoginPage = () => {
     const [signUpButtonText, setSignUpButtonText] = useState('Sign Up');
     const [resetLinkButtonText, setResetLinkButtonText] = useState('Send Reset Link');
 
-    const { validUsername, validPassword } = useAppContext();
+    const { validUsername, validPassword, setValidUsername, setValidPassword, setLoginStatus, setEmail } = useAppContext();
 
     const validateCredentials = () => {
         if (!username || !password) {
@@ -55,11 +59,12 @@ const LoginPage = () => {
             return;
         }
 
+        setEmail(username);
+
         setLoginButtonText("Success...");
         setTimeout(() => {
-            setModalMessage("Login successful!");
-            setShowModal(true);
-        }, 2000);
+            setLoginStatus("true");
+        }, 1500);
     };
 
     const handleSignUp = (event) => {
@@ -67,11 +72,14 @@ const LoginPage = () => {
 
         if (!validateCredentials()) return;
 
+        setValidUsername(username);
+        setValidPassword(password);
+        setEmail(username);
+
         setSignUpButtonText("Success...");
         setTimeout(() => {
-            setModalMessage("Signup successful!");
-            setShowModal(true);
-        }, 2000);
+            setLoginStatus("true");
+        }, 1500);
     };
 
     const isValidPassword = (password) => {
@@ -192,7 +200,7 @@ const LoginPage = () => {
                                 <button type="button" className="btn btn-link" onClick={handleForgotPassword}>Forgot Password?</button>
                             </div>
                             <div className="mb-3 text-center">
-                                <button type="button" className="btn btn-outline-secondary">Back</button>
+                                <button type="button" className="btn btn-outline-secondary" onClick={() => navigate(-1)}>Back</button>
                             </div>
                         </form>
                     </div>

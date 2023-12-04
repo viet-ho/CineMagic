@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Router, Routes, Navigate } from "react-router-dom";
+import { useAppContext } from './AppContext';
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/Homepage";
@@ -13,6 +14,13 @@ import ConfirmationPage from "./components/ConfirmationPage";
 import MovieInfo from "./components/MovieInfo";
 import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage";
+import AccountPage from "./components/AccountPage";
+
+const ProfileHandler = () => {
+  const { loginStatus } = useAppContext();
+
+  return loginStatus === "true" ? <AccountPage /> : <LoginPage />;
+};
 
 function App() {
   //return <DateSelection></DateSelection>;
@@ -24,6 +32,7 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
   //return <LoginPage></LoginPage>;
+  //return <AccountPage></AccountPage>;
 
   return (
     <div>
@@ -37,7 +46,8 @@ function App() {
         <Route path="/ticket-selection" element={<TicketBookingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/credit-card" element={<CreditCardPage />} />
-        <Route path="/profile" element={<LoginPage />} />
+        <Route path="/profile" element={<ProfileHandler />} />
+        <Route path="/profile-info" element={<ProfileHandler />} />
         <Route path="/confirmation-page" element={<ConfirmationPage />} />
       </Routes>
     </div>

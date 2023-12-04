@@ -126,8 +126,8 @@ body.reviews-page-background {
 
 .reviews-page .movie-poster {
   display: block;
-  height: 150px;
-  height: 150px;
+  height: 200px;
+  width: 150px;
   border-radius: 20px;
   margin: 0 auto 20px;
 }

@@ -10,7 +10,7 @@ const Modal = ({ showModal, toggleModal, message }) => {
         <div className="v-modal-overlay">
             <div className="v-modal-content">
                 <div className="v-modal-header">
-                    <span className="v-modal-title">Error</span>
+                    <span className="v-modal-title">Attention</span>
                     <button className="v-modal-close-button" onClick={toggleModal}>&times;</button>
                 </div>
                 <div className="v-modal-body">

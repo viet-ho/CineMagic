@@ -25,20 +25,37 @@ const CreditCardPage = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setCardDetails(prevDetails => ({ ...prevDetails, [name]: value }));
+
+        if (name === "cardNumber") {
+            let formattedValue = value.replace(/\D/g, '').substring(0, 16);
+            formattedValue = formattedValue.replace(/(\d{4})(?=\d)/g, '$1-');
+            setCardDetails(prevDetails => ({ ...prevDetails, [name]: formattedValue }));
+        } else if (name === "expiry") {
+            let formattedValue = value.replace(/\D/g, '').substring(0, 4);
+            formattedValue = formattedValue.replace(/(\d{2})(?=\d)/g, '$1/');
+            setCardDetails(prevDetails => ({ ...prevDetails, [name]: formattedValue }));
+        } else if (name === "postalCode") {
+            let formattedValue = value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 6);
+            if (formattedValue.length > 3) {
+                formattedValue = `${formattedValue.slice(0, 3)} ${formattedValue.slice(3)}`;
+            }
+            setCardDetails(prevDetails => ({ ...prevDetails, [name]: formattedValue }));
+        } else {
+            setCardDetails(prevDetails => ({ ...prevDetails, [name]: value }));
+        }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const cardNumberRegex = /^\d{16}$/;
+        const cardNumberRegex = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
         const expiryRegex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
         const cvvRegex = /^\d{3}$/;
         const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
 
         // Validation checks
         if (!cardNumberRegex.test(cardDetails.cardNumber)) {
-            setModalMessage("Please enter a valid 16-digit credit card number (e.g. 1234567891234567).");
+            setModalMessage("Please enter a valid 16-digit credit card number (e.g. 1234-5678-9123-4567).");
         } else if (!cardDetails.cardName.trim()) {
             setModalMessage("Please enter the name on the card.");
         } else if (!expiryRegex.test(cardDetails.expiry)) {
@@ -87,7 +104,7 @@ const CreditCardPage = () => {
                                 name="cardNumber"
                                 value={cardDetails.cardNumber}
                                 onChange={handleChange}
-                                maxLength={16}
+                                maxLength={20}
                                 placeholder="Enter 16-digit credit card number"
                             />
                         </div>
@@ -110,7 +127,7 @@ const CreditCardPage = () => {
                                 name="expiry"
                                 value={cardDetails.expiry}
                                 onChange={handleChange}
-                                placeholder="MM/YY"
+                                placeholder="MMYY"
                                 maxLength={5}
                             />
                         </div>
@@ -134,7 +151,7 @@ const CreditCardPage = () => {
                                 name="postalCode"
                                 value={cardDetails.postalCode}
                                 onChange={handleChange}
-                                placeholder="Enter postal code (e.g. T2N 1N4)"
+                                placeholder="Enter postal code (e.g. T2N1N4)"
                                 maxLength={7}
                             />
                         </div>

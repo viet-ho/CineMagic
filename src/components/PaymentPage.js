@@ -50,7 +50,13 @@ const PaymentPage = () => {
     };
 
     const handlePhoneNumberChange = (event) => {
-        setPhoneNumber(event.target.value);
+        let input = event.target.value.replace(/\D/g, '');
+        if (input.length > 6) {
+            input = `${input.slice(0, 3)}-${input.slice(3, 6)}-${input.slice(6, 10)}`;
+        } else if (input.length > 3) {
+            input = `${input.slice(0, 3)}-${input.slice(3)}`;
+        }
+        setPhoneNumber(input); 
     };
 
     const selectPaymentMethod = (method) => {
@@ -58,7 +64,10 @@ const PaymentPage = () => {
     };
 
     const getButtonClass = (method) => {
-        return `btn ${selectedPaymentMethod === method ? 'button-grey' : 'btn-primary'}`;
+        if (!selectedPaymentMethod) {
+            return 'btn btn-primary';
+        }
+        return `btn ${selectedPaymentMethod === method ? 'btn-primary' : 'button-grey'}`;
     };
 
     const handleNextClick = () => {
@@ -106,10 +115,10 @@ const PaymentPage = () => {
                 <div className="input-section centered-section">
                     <div className="form-group">
                         <label>E-mail:</label>
-                        <input type="email" className="form-control mb-3" placeholder="example@example.com" value={email} onChange={handleEmailChange} />
+                        <input type="email" className="form-control mb-3" placeholder="e.g. example@example.com" value={email} onChange={handleEmailChange} />
 
                         <label>Phone number:</label>
-                        <input type="text" className="form-control mb-3" placeholder="e.g. 123-456-7890" value={phoneNumber} onChange={handlePhoneNumberChange} />
+                        <input type="text" className="form-control mb-3" placeholder="e.g. 0123456789" value={phoneNumber} onChange={handlePhoneNumberChange} />
 
                         <label>Payment Method:</label>
                         <div className="payment-methods mb-3">

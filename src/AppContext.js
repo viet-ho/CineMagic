@@ -28,6 +28,7 @@ export const AppProvider = ({ children }) => {
   const [seatIDs, setSeatIDs] = useState([]);
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
+  const [accountName, setAccountName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
@@ -35,6 +36,9 @@ export const AppProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [validUsername, setValidUsername] = useState("abc@gmail.com");
   const [validPassword, setValidPassword] = useState("@Abcd1234");
+  const [profilePicture, setProfilePicture] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png");
+  const [loginStatus, setLoginStatus] = useState("false");
+  const [orderNumber, setOrderNumber] = useState(0);
 
   // Add other shared states if needed
 
@@ -106,6 +110,14 @@ export const AppProvider = ({ children }) => {
         setValidUsername,
         validPassword,
         setValidPassword,
+        accountName,
+        setAccountName,
+        profilePicture,
+        setProfilePicture,
+        loginStatus,
+        setLoginStatus,
+        orderNumber,
+        setOrderNumber,
 
         // Provide other states here
       }}
