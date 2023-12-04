@@ -12,10 +12,11 @@ const MovieInfo = () => {
   };
 
   const navigate = useNavigate();
-  const { title, image, trailer, description } = useAppContext();
+  const { title, image, trailer, description, moreInfo } = useAppContext();
 
   const movieData = {
     name: title,
+    otherMovieInfo: moreInfo,
     titleCard: image,
     trailerUrl: trailer,
     description: description,
@@ -48,6 +49,11 @@ const MovieInfo = () => {
           src={movieData.titleCard}
           alt="Title Card"
         />
+        <p className="movie-other-info">
+          <b>
+            <i>{movieData.otherMovieInfo}</i>
+          </b>
+        </p>
         <p>{movieData.description}</p>
 
         <div className="movie-info-buttons">

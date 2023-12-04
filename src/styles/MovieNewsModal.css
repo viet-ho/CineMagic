@@ -13,14 +13,16 @@
 
 .i-modal-content {
   background-color: #fff;
-  padding: 40px;
+  padding: 20px; /* Reduced padding for a more compact look */
   border-radius: 10px;
   max-width: 600px;
-  max-height: 80vh;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+  width: 100%; /* Adjusted width to 100% for responsiveness */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   overflow-y: auto;
+  text-align: center; /* Center the text content */
   position: relative;
 }
+
 
 .i-close-button {
   position: absolute;
@@ -45,20 +47,21 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #1B1212;
-  padding-bottom: 20px;
+  margin-bottom: 10px; /* Adjusted margin for better spacing */
 }
 
 .movie-news-image-modal {
-  margin-bottom: 20px;
+  margin: 0 auto 20px; 
   display: block;
-  max-width: 100%; 
-  border: 3px solid  #e64a19;
+  height: 300px;
+  width: 300px;
+  border: 3px solid #e64a19;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .movie-news-description {
-  padding-top: 20px;
   font-size: 1rem;
   color: #333;
-  padding-bottom: 20px;
+  margin-bottom: 20px; 
+
 }
