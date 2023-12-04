@@ -16,6 +16,12 @@ import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage";
 import AccountPage from "./components/AccountPage";
 
+const ProfileHandler = () => {
+  const { loginStatus } = useAppContext();
+
+  return loginStatus === "true" ? <AccountPage /> : <LoginPage />;
+};
+
 function App() {
   //return <DateSelection></DateSelection>;
   //return <MovieInfo></MovieInfo>;
@@ -27,8 +33,6 @@ function App() {
   //return <ConfirmationPage></ConfirmationPage>;
   //return <LoginPage></LoginPage>;
   //return <AccountPage></AccountPage>;
-
-  const { loginStatus } = useAppContext();
 
   return (
     <div>
@@ -42,15 +46,9 @@ function App() {
         <Route path="/ticket-selection" element={<TicketBookingPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/credit-card" element={<CreditCardPage />} />
-        <Route
-          path="/profile"
-          element={loginStatus === "true" ? <Navigate to="/profile-info" /> : <LoginPage />}
-        />
+        <Route path="/profile" element={<ProfileHandler />} />
+        <Route path="/profile-info" element={<ProfileHandler />} />
         <Route path="/confirmation-page" element={<ConfirmationPage />} />
-        <Route
-          path="/profile-info"
-          element={loginStatus === "false" ? <Navigate to="/profile" /> : <AccountPage />}
-        />
       </Routes>
     </div>
   );

@@ -34,6 +34,12 @@ const CreditCardPage = () => {
             let formattedValue = value.replace(/\D/g, '').substring(0, 4);
             formattedValue = formattedValue.replace(/(\d{2})(?=\d)/g, '$1/');
             setCardDetails(prevDetails => ({ ...prevDetails, [name]: formattedValue }));
+        } else if (name === "postalCode") {
+            let formattedValue = value.toUpperCase().replace(/[^A-Z0-9]/g, '').substring(0, 6);
+            if (formattedValue.length > 3) {
+                formattedValue = `${formattedValue.slice(0, 3)} ${formattedValue.slice(3)}`;
+            }
+            setCardDetails(prevDetails => ({ ...prevDetails, [name]: formattedValue }));
         } else {
             setCardDetails(prevDetails => ({ ...prevDetails, [name]: value }));
         }
@@ -121,7 +127,7 @@ const CreditCardPage = () => {
                                 name="expiry"
                                 value={cardDetails.expiry}
                                 onChange={handleChange}
-                                placeholder="MM/YY"
+                                placeholder="MMYY"
                                 maxLength={5}
                             />
                         </div>
@@ -145,7 +151,7 @@ const CreditCardPage = () => {
                                 name="postalCode"
                                 value={cardDetails.postalCode}
                                 onChange={handleChange}
-                                placeholder="Enter postal code (e.g. T2N 1N4)"
+                                placeholder="Enter postal code (e.g. T2N1N4)"
                                 maxLength={7}
                             />
                         </div>

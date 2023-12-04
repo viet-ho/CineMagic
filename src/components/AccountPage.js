@@ -39,7 +39,13 @@ const AccountPage = () => {
     };
 
     const handlePhoneNumberChange = (e) => {
-        setTempPhoneNumber(e.target.value);
+        let input = e.target.value.replace(/\D/g, '');
+        if (input.length > 6) {
+            input = `${input.slice(0, 3)}-${input.slice(3, 6)}-${input.slice(6, 10)}`;
+        } else if (input.length > 3) {
+            input = `${input.slice(0, 3)}-${input.slice(3)}`;
+        }
+        setTempPhoneNumber(input); 
     };
 
     const handlePaymentMethodChange = (e) => {
@@ -228,7 +234,7 @@ const AccountPage = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-header">Phone Number</label>
-                        <input type="tel" className="form-control" name="phoneNumber" value={tempPhoneNumber} onChange={handlePhoneNumberChange} placeholder="e.g. 123-456-7890" />
+                        <input type="tel" className="form-control" name="phoneNumber" value={tempPhoneNumber} onChange={handlePhoneNumberChange} placeholder="e.g. 0123456789" />
                     </div>
                     <div className="form-group">
                         <label className="form-header">Email</label>
