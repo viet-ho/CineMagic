@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Router, Routes, Navigate } from "react-router-dom";
+import { useAppContext } from './AppContext';
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/Homepage";
@@ -14,6 +15,12 @@ import MovieInfo from "./components/MovieInfo";
 import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage";
 import AccountPage from "./components/AccountPage";
+
+const ProtectedRoute = ({ children }) => {
+  const { loginStatus } = useAppContext();
+
+  return loginStatus === "true" ? children : <Navigate to="/profile" />;
+};
 
 function App() {
   //return <DateSelection></DateSelection>;
@@ -41,7 +48,14 @@ function App() {
         <Route path="/credit-card" element={<CreditCardPage />} />
         <Route path="/profile" element={<LoginPage />} />
         <Route path="/confirmation-page" element={<ConfirmationPage />} />
-        <Route path="/profile-info" element={<AccountPage />} />
+        <Route
+          path="/profile-info"
+          element={
+            <ProtectedRoute>
+              <AccountPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );

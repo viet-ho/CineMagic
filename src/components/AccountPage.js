@@ -5,12 +5,13 @@ import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/AccountPage.css";
+import Modal from "../components/Modal.js";
 
 const AccountPage = () => {
 
     const navigate = useNavigate();
 
-    const { accountName, setAccountName, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod, profilePicture, setProfilePicture } = useAppContext();
+    const { accountName, setAccountName, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod, profilePicture, setProfilePicture, validPassword, setValidPassword } = useAppContext();
 
     const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
     const [oldPassword, setOldPassword] = useState('');
@@ -19,10 +20,15 @@ const AccountPage = () => {
     const [passwordShown, setPasswordShown] = useState(false);
     const [newPasswordShown, setNewPasswordShown] = useState(false);
     const [confirmNewPasswordShown, setConfirmNewPasswordShown] = useState(false);
-
     const [tempAccountName, setTempAccountName] = useState(accountName);
     const [tempEmail, setTempEmail] = useState(email);
     const [tempPhoneNumber, setTempPhoneNumber] = useState(phoneNumber);
+    const [showModal, setShowModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
+    const [updateButtonText, setUpdateButtonText] = useState('Update Information');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
 
     const handleAccountNameChange = (e) => {
         setTempAccountName(e.target.value);
@@ -60,9 +66,24 @@ const AccountPage = () => {
     };
 
     const handleUpdateInfo = () => {
+        if (tempPhoneNumber && !phoneRegex.test(tempPhoneNumber)) {
+            setModalMessage('Please enter a valid phone number in the format 123-456-7890');
+            setShowModal(true);
+            return;
+        }
+
+        if (tempEmail && !emailRegex.test(tempEmail)) {
+            setModalMessage('Please enter a valid email in the format example@example.com');
+            setShowModal(true);
+            return;
+        }
+
         setAccountName(tempAccountName);
         setEmail(tempEmail);
         setPhoneNumber(tempPhoneNumber);
+
+        setModalMessage("Update successfully!");
+        setShowModal(true);
     };
 
     const handleFormSubmit = (e) => {
@@ -86,9 +107,27 @@ const AccountPage = () => {
         setConfirmNewPasswordShown(!confirmNewPasswordShown);
     };
 
+    const isValidPassword = (password) => {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
+
     const handleChangePassword = () => {
-        // Add logic to handle password change
-        // Validate old password, compare new passwords, and check format
+        if (oldPassword !== validPassword) {
+            setModalMessage("The old password is incorrect.");
+        } else if (!isValidPassword(newPassword)) {
+            setModalMessage("The new password format is invalid. It must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters.");
+        } else if (confirmNewPassword !== newPassword) {
+            setModalMessage("Password and confirm password does not match.");
+        } else {
+            setValidPassword(newPassword);
+            setModalMessage("Password changed successfully!");
+        }
+        setShowChangePasswordModal(false);
+        setShowModal(true);
+        setOldPassword('');
+        setNewPassword('');
+        setConfirmNewPassword('');
     };
 
     const passwordTooltip = (
@@ -174,6 +213,7 @@ const AccountPage = () => {
     return (
         <div className="account-page">
             <div className="account-info-container">
+                <Modal showModal={showModal} toggleModal={() => setShowModal(false)} message={modalMessage} />
                 {ChangePasswordModal()}
                 <h2>Account Information</h2>
                 <form className="info-container" onSubmit={handleFormSubmit}>
@@ -188,11 +228,11 @@ const AccountPage = () => {
                     </div>
                     <div className="form-group">
                         <label className="form-header">Phone Number</label>
-                        <input type="tel" className="form-control" name="phoneNumber" value={tempPhoneNumber} onChange={handlePhoneNumberChange} />
+                        <input type="tel" className="form-control" name="phoneNumber" value={tempPhoneNumber} onChange={handlePhoneNumberChange} placeholder="e.g. 123-456-7890" />
                     </div>
                     <div className="form-group">
                         <label className="form-header">Email</label>
-                        <input type="email" className="form-control" name="email" value={tempEmail} onChange={handleEmailChange} />
+                        <input type="text" className="form-control" name="email" value={tempEmail} onChange={handleEmailChange} placeholder="e.g. example@example.com" />
                     </div>
                     <div className="form-group">
                         <label className="form-header">Payment Method</label>
@@ -203,7 +243,7 @@ const AccountPage = () => {
                             <option>Credit Card</option>
                         </select>
                     </div>
-                    <button type="submit" className="btn btn-primary mr-2" onClick={handleUpdateInfo}>Update Info</button>
+                    <button type="submit" className="btn btn-primary mr-2" onClick={handleUpdateInfo}>{updateButtonText}</button>
                     <button type="button" className="btn btn-primary" onClick={() => setShowChangePasswordModal(true)}>Change Password</button>
                 </form>
                 <div className="order-history">
@@ -214,7 +254,6 @@ const AccountPage = () => {
                                 <th>Order Number</th>
                                 <th>Date</th>
                                 <th>Movie</th>
-                                <th>Tickets</th>
                                 <th>Total Amount</th>
                             </tr>
                         </thead>
@@ -224,7 +263,6 @@ const AccountPage = () => {
                                     <td>{order.orderNumber}</td>
                                     <td>{order.date}</td>
                                     <td>{order.movie}</td>
-                                    <td>{order.tickets}</td>
                                     <td>{order.totalAmount}</td>
                                 </tr>
                             ))}
@@ -232,7 +270,7 @@ const AccountPage = () => {
                     </table>
                 </div>
             </div>
-            <button className="btn btn-secondary back-button-account">
+            <button className="btn btn-secondary back-button-account" onClick={() => navigate(-1)}>
                 Back
             </button>
         </div>
