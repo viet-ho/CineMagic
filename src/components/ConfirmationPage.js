@@ -7,16 +7,16 @@ import "../styles/ConfirmationPage.css";
 
 const SummaryPage = () => {
 
-  const { adultCount, childCount, seniorCount, seatIDs, phoneNumber, email, selectedPaymentMethod, promoCode, subtotal, discount, tax, cleaningFee, total, specialAssistance } = useAppContext();
+  const { title, date, time, image, adultCount, childCount, seniorCount, seatIDs, phoneNumber, email, selectedPaymentMethod, promoCode, subtotal, discount, tax, cleaningFee, total, specialAssistance } = useAppContext();
 
   const navigate = useNavigate();
 
   const movieDetails = {
-    title: "Movie Title",
-    date: "Date",
-    time: "Time",
-    location: "Theater Address",
-    imageUrl: "https://source.unsplash.com/featured/?movie"
+    title: title,
+    date: date.toDateString(),
+    time: time,
+    location: "CineMagic at 511 10 Ave SW",
+    imageUrl: image,
   };
 
   const adultTicketPrice = 22;
@@ -64,7 +64,7 @@ const SummaryPage = () => {
       <div className="confirm-container">
         <main className="main-container">
           <section className="movie-details">
-            <img src={movieDetails.imageUrl} alt="Movie Poster" />
+            <img src={movieDetails.imageUrl} alt="Movie Poster" className="movie-poster-confirm" />
             <div>
               <h3>{movieDetails.title}</h3>
               <p><strong>Date:</strong> {movieDetails.date}</p>

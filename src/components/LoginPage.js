@@ -57,7 +57,7 @@ const LoginPage = () => {
 
         setLoginButtonText("Success...");
         setTimeout(() => {
-            setModalMessage("Login successful!");
+            setModalMessage("Login Successfully!");
             setShowModal(true);
         }, 2000);
     };
@@ -69,7 +69,7 @@ const LoginPage = () => {
 
         setSignUpButtonText("Success...");
         setTimeout(() => {
-            setModalMessage("Signup successful!");
+            setModalMessage("Signup Successfully!");
             setShowModal(true);
         }, 2000);
     };

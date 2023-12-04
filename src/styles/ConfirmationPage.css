@@ -97,6 +97,13 @@ body.summary-page-background {
   background-color: #ff5722;
 }
 
+.confirm-container .movie-poster-confirm {
+  display: block;
+  height: 200px;
+  width: 150px;
+  border-radius: 20px;
+}
+
 @media (max-width: 768px) {
   .confirm-container {
     max-width: 90%;
