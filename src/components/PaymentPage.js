@@ -64,7 +64,10 @@ const PaymentPage = () => {
     };
 
     const getButtonClass = (method) => {
-        return `btn ${selectedPaymentMethod === method ? 'button-grey' : 'btn-primary'}`;
+        if (!selectedPaymentMethod) {
+            return 'btn btn-primary';
+        }
+        return `btn ${selectedPaymentMethod === method ? 'btn-primary' : 'button-grey'}`;
     };
 
     const handleNextClick = () => {

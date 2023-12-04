@@ -45,7 +45,7 @@ const AccountPage = () => {
         } else if (input.length > 3) {
             input = `${input.slice(0, 3)}-${input.slice(3)}`;
         }
-        setTempPhoneNumber(input); 
+        setTempPhoneNumber(input);
     };
 
     const handlePaymentMethodChange = (e) => {
@@ -229,6 +229,15 @@ const AccountPage = () => {
                         <input type="file" ref={fileInputRef} className="form-control" name="profilePicture" onChange={handleProfilePicChange} style={{ display: 'none' }} />
                     </div>
                     <div className="form-group">
+                        <label className="form-header">Payment Method</label>
+                        <select className="form-control" name="paymentMethod" value={selectedPaymentMethod} onChange={handlePaymentMethodChange}>
+                            <option>None</option>
+                            <option>Apple Pay</option>
+                            <option>Google Pay</option>
+                            <option>Credit Card</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
                         <label className="form-header">Name</label>
                         <input type="text" className="form-control" name="accountName" value={tempAccountName} onChange={handleAccountNameChange} />
                     </div>
@@ -239,15 +248,6 @@ const AccountPage = () => {
                     <div className="form-group">
                         <label className="form-header">Email</label>
                         <input type="text" className="form-control" name="email" value={tempEmail} onChange={handleEmailChange} placeholder="e.g. example@example.com" />
-                    </div>
-                    <div className="form-group">
-                        <label className="form-header">Payment Method</label>
-                        <select className="form-control" name="paymentMethod" value={selectedPaymentMethod} onChange={handlePaymentMethodChange}>
-                            <option>None</option>
-                            <option>Apple Pay</option>
-                            <option>Google Pay</option>
-                            <option>Credit Card</option>
-                        </select>
                     </div>
                     <button type="submit" className="btn btn-primary mr-2" onClick={handleUpdateInfo}>{updateButtonText}</button>
                     <button type="button" className="btn btn-primary" onClick={() => setShowChangePasswordModal(true)}>Change Password</button>

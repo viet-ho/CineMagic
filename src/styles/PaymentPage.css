@@ -114,16 +114,14 @@ body.payment-page-background {
 }
 
 .payment-container .input-section .apply-promo-btn {
-    background-color: #808080;
-    border-color: #808080;
+    background-color: #ff5722;
+    border: none;
     color: white;
     text-align: center;
 }
 
 .payment-container .input-section .apply-promo-btn:hover {
-    background-color: #C0C0C0;
-    border-color: #C0C0C0;
-    color: white;
+    background-color: #ff8c00;
 }
 
 .payment-container .payment-methods .btn.button-grey {
