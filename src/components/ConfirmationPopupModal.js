@@ -23,7 +23,7 @@ const ConfirmationPopupModal = ({ onClose }) => {
           Order Number: #{orderNumber}
         </p>
         <p className="movie-confirm-description-modal">Cost: {total}</p>
-        <p className="movie-confirm-description-modal">Date: {date}</p>
+        <p className="movie-confirm-description-modal">Date: lol</p>
         <p className="movie-confirm-description-modal">Time: {time}</p>
         <button className="cta-button-get-ticket">Download Ticket</button>
       </div>

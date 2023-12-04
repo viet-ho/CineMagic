@@ -35,6 +35,8 @@ const HomePage = () => {
   } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
+  const [isPopupOpen, setIsPopupOpen] = useState({ showConfirm });
+
   const [showNews, setShowNews] = useState(false);
 
   const handleShowNews = () => {
@@ -47,6 +49,7 @@ const HomePage = () => {
 
   const handleClosePopup = () => {
     setShowConfirm(false);
+    setIsPopupOpen(false);
   };
 
   const featuredMovies = [
@@ -278,12 +281,12 @@ const HomePage = () => {
 
   const movieNews = [
     {
-      img: tom_hanks,
+      img: movieCard1,
       title: "Tom Hanks Stars in Indieana Jones",
       description:
         "Tom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones...",
       descriptionLong:
-        "\nTom Hanks, the renowned actor known for his dynamic performances in blockbuster hits, has ventured into new creative territories by embracing the indie film scene. His latest project finds him in the starring role of Indieanna Jones an independent film that promises to showcase his versatile acting prowess in a more intimate, character-driven narrative. Hanks' transition into the independent circuit marks a significant shift from his typical mainstream endeavors, allowing him to explore complex, nuanced characters that indie films often present.",
+        "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
     },
     {
       img: indie,
@@ -467,7 +470,7 @@ const HomePage = () => {
         {showNews && <MovieNewsModal onClose={handleCloseNews} />}
       </section>
 
-      {{ showConfirm } && <ConfirmationPopupModal onClose={handleClosePopup} />}
+      {isPopupOpen && <ConfirmationPopupModal onClose={handleClosePopup} />}
       <ReactModal
         className="popup"
         isOpen={isOpen}
