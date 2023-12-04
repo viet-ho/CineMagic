@@ -33,7 +33,7 @@ const SummaryPage = () => {
 
   const movieDetails = {
     title: title,
-    date: date.toDateString(),
+    date: date instanceof Date ? date.toDateString() : 'Invalid Date',
     time: time,
     location: "CineMagic at 511 10 Ave SW",
     imageUrl: image,

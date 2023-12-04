@@ -134,6 +134,16 @@ body.payment-page-background {
     border: none;
 }
 
+.payment-container .btn.button-green {
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.payment-container .btn.button-green:hover {
+    background-color: green;
+}
+
 @media (max-width: 768px) {
     .payment-container {
         padding: 10px;
