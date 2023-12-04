@@ -5,10 +5,14 @@ import { addDays } from "date-fns";
 import "../styles/DateSelection.css";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
+import Modal from "../components/Modal.js";
 
 const DateSelection = () => {
   const { setDate, setTime, title } = useAppContext();
   const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
 
   const [startDate, setStartDate] = useState(new Date());
   const [selectedShowtime, setSelectedShowtime] = useState(null);
@@ -34,8 +38,8 @@ const DateSelection = () => {
   };
 
   const handleConfirmShowtime = () => {
-    alert(`Showtime confirmed: ${selectedShowtime}`);
-    navigate("/ticket-selection");
+    setModalMessage(`Showtime confirmed on ${startDate.toDateString()} at ${selectedShowtime}`);
+    setShowModal(true);
   };
 
   useEffect(() => {
@@ -48,6 +52,7 @@ const DateSelection = () => {
 
   return (
     <div className="date-selection-main">
+      <Modal showModal={showModal} toggleModal={() => navigate("/ticket-selection")} message={modalMessage} />
       <h1>🎥 Selected Movie: {title}</h1>
       <p>
         <i>Click on the date selector box to change the showtime date.</i>
