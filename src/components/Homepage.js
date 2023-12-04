@@ -5,6 +5,9 @@ import movieCard3 from "../assets/Movie3.jpg";
 import movieCard4 from "../assets/Movie4.jpeg";
 import movieCard5 from "../assets/Movie5.png";
 import theatre from "../assets/theatre.jpeg";
+import tom_hanks from "../assets/Tom-Hanks.jpg";
+import despicable from "../assets/Despicable_Me.jpg";
+import indie from "../assets/indie-aw.jpg";
 import { TypeAnimation } from "react-type-animation";
 import "../styles/Homepage.css";
 import Carousel from "react-elastic-carousel";
@@ -263,28 +266,28 @@ const HomePage = () => {
 
   const movieNews = [
     {
-      img: movieCard1,
+      img: tom_hanks,
       title: "Tom Hanks Stars in Indieana Jones",
       description:
         "Tom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones...",
       descriptionLong:
-        "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
+        "\nTom Hanks, the renowned actor known for his dynamic performances in blockbuster hits, has ventured into new creative territories by embracing the indie film scene. His latest project finds him in the starring role of Indieanna Jones an independent film that promises to showcase his versatile acting prowess in a more intimate, character-driven narrative. Hanks' transition into the independent circuit marks a significant shift from his typical mainstream endeavors, allowing him to explore complex, nuanced characters that indie films often present.",
     },
     {
-      img: movieCard2,
+      img: indie,
       title: "2024 Indie Awards",
       description:
         "The 2024 Indie Awards will be taking place in Winnipeg, Manitoba this year...",
       descriptionLong:
-        "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
+        "\nThe 2024 Indie Awards, a much-anticipated event celebrating the spirit and achievements of independent filmmaking, is set to take place in the culturally rich and vibrant city of Winnipeg, Manitoba. This year's venue choice underscores a commitment to embracing the diversity and creative energy that Winnipeg is renowned for. The city, often hailed as the gateway to the Canadian West, offers a blend of historical charm and modern dynamism, setting a picturesque backdrop for an event that honors the innovative work of indie filmmakers.",
     },
     {
-      img: movieCard3,
+      img: despicable,
       title: "Despicable Indie Rocks Box Office",
       description:
         "Earning a staggering $5.5 million USD, Despicable Indie has taken the indie market by storm...",
       descriptionLong:
-        "\nTom Hanks has taken his first leap into the indie market, being the lead actors on Indieanna Jones... blah blah balhsahhauuhadwsdfuhahuwfhoawuhiffawhf",
+        "\nEarning a staggering $5.5 million USD, Despicable Indie has taken the indie market by storm, emerging as a dark horse in a field typically dominated by modest budgets and understated box office expectations. This remarkable film, with its innovative narrative and captivating performances, has not only garnered critical acclaim but also achieved an exceptional level of commercial success that is rarely seen in the independent film industry. Its impressive earnings signify a groundbreaking moment, showcasing the immense potential for indie productions to resonate with wider audiences and achieve financial milestones that rival those of larger studio films.",
     },
   ];
 
