@@ -1,0 +1,80 @@
+.i-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .i-modal-content {
+    background-color: #fff;
+    padding: 20px; /* Reduced padding for a more compact look */
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%; /* Adjusted width to 100% for responsiveness */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    text-align: center; /* Center the text content */
+    position: relative;
+  }
+  
+  
+  .i-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .i-close-button:hover {
+    background-color: #e64a19;
+  }
+  
+  .movie-confirm-title-modal {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1B1212;
+    margin-bottom: 10px; /* Adjusted margin for better spacing */
+  }
+  
+  .movie-confirm-image-modal {
+    margin: 0 auto 20px; 
+    display: block;
+    height: 300px;
+    width: 300px;
+    border: 3px solid #e64a19;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .movie-confirm-description-modal {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px; 
+  
+  }
+
+  .cta-button-get-ticket {
+    background-color: #FF7F50;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+  }

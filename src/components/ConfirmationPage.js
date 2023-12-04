@@ -25,6 +25,8 @@ const SummaryPage = () => {
     cleaningFee,
     total,
     specialAssistance,
+    setShowConfirm,
+    setOrderNumber,
   } = useAppContext();
 
   const navigate = useNavigate();
@@ -84,6 +86,20 @@ const SummaryPage = () => {
       document.body.classList.remove("summary-page-background");
     };
   }, []);
+
+  const generateOrderNumber = () => {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let orderNumber = "";
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      orderNumber += characters.charAt(randomIndex);
+    }
+    return orderNumber;
+  };
+
+  const handleGenerateOrderNumber = () => {
+    setOrderNumber(generateOrderNumber());
+  };
 
   return (
     <div className="confirmation-page">
@@ -164,7 +180,16 @@ const SummaryPage = () => {
             </p>
           </section>
           <div className="confirm-page-action-buttons">
-            <Button variant="primary" size="lg" className="complete-button">
+            <Button
+              variant="primary"
+              size="lg"
+              className="complete-button"
+              onClick={() => {
+                navigate("/");
+                setShowConfirm(true);
+                handleGenerateOrderNumber();
+              }}
+            >
               Complete Order
             </Button>
             <Button

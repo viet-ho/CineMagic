@@ -12,6 +12,7 @@ import Item from "./Item";
 import ReactModal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
+import ConfirmationPopupModal from "./ConfirmationPopupModal";
 import MovieNewsModal from "./MovieNewsModal";
 
 const HomePage = () => {
@@ -26,6 +27,8 @@ const HomePage = () => {
     setNewsTitle,
     setNewsDescription,
     setMoreInfo,
+    showConfirm,
+    setShowConfirm,
   } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,6 +40,10 @@ const HomePage = () => {
 
   const handleCloseNews = () => {
     setShowNews(false);
+  };
+
+  const handleClosePopup = () => {
+    setShowConfirm(false);
   };
 
   const featuredMovies = [
@@ -456,6 +463,7 @@ const HomePage = () => {
         {showNews && <MovieNewsModal onClose={handleCloseNews} />}
       </section>
 
+      {{ showConfirm } && <ConfirmationPopupModal onClose={handleClosePopup} />}
       <ReactModal
         className="popup"
         isOpen={isOpen}
