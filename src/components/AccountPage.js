@@ -11,7 +11,7 @@ const AccountPage = () => {
 
     const navigate = useNavigate();
 
-    const { accountName, setAccountName, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod, profilePicture, setProfilePicture, validPassword, setValidPassword } = useAppContext();
+    const { accountName, setAccountName, email, setEmail, phoneNumber, setPhoneNumber, selectedPaymentMethod, setSelectedPaymentMethod, profilePicture, setProfilePicture, validPassword, setValidPassword, title, date, total, orderNumber } = useAppContext();
 
     const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
     const [oldPassword, setOldPassword] = useState('');
@@ -26,6 +26,7 @@ const AccountPage = () => {
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [updateButtonText, setUpdateButtonText] = useState('Update Information');
+    const [orderHistory, setOrderHistory] = useState([]);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
@@ -97,10 +98,6 @@ const AccountPage = () => {
         handleUpdateInfo();
     };
 
-    const [orderHistory, setOrderHistory] = useState([
-        //Order Data
-    ]);
-
     const togglePasswordVisibility = () => {
         setPasswordShown(!passwordShown);
     };
@@ -141,8 +138,6 @@ const AccountPage = () => {
             Password must contain at least 8 characters, including UPPER/lowercase, numbers, and at least one special character (@$!%*?&).
         </Tooltip>
     );
-
-    // ... rest of the component
 
     const ChangePasswordModal = () => (
         <div className={`modal ${showChangePasswordModal ? 'show' : ''}`} tabIndex="-1" style={{ display: showChangePasswordModal ? 'block' : 'none' }}>
@@ -216,6 +211,19 @@ const AccountPage = () => {
         };
     }, []);
 
+    useEffect(() => {
+        if (orderNumber && title && date instanceof Date && total) {
+            setOrderHistory([
+                {
+                    orderNumber: orderNumber,
+                    date: date.toDateString(),
+                    movie: title,
+                    totalAmount: total
+                }
+            ]);
+        }
+    }, [title, date, total]);
+
     return (
         <div className="account-page">
             <div className="account-info-container">
@@ -266,10 +274,10 @@ const AccountPage = () => {
                         <tbody>
                             {orderHistory.map((order, index) => (
                                 <tr key={index}>
-                                    <td>{order.orderNumber}</td>
+                                    <td>#{order.orderNumber}</td>
                                     <td>{order.date}</td>
                                     <td>{order.movie}</td>
-                                    <td>{order.totalAmount}</td>
+                                    <td>${order.totalAmount}</td>
                                 </tr>
                             ))}
                         </tbody>
