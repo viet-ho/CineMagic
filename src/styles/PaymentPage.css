@@ -52,6 +52,10 @@ body.payment-page-background {
     font-weight: 600;
 }
 
+.payment-container ::placeholder {
+    color: #999;
+}
+
 .payment-container .payment-methods .btn {
     margin-right: 1rem;
     background-color: #ff5722;

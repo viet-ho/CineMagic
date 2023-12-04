@@ -19,6 +19,10 @@ body.credit-page-background {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.credit-page ::placeholder {
+    color: #999;
+}
+
 .credit-page .credit-actions {
     display: flex;
     flex-direction: column;
