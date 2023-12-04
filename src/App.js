@@ -13,6 +13,7 @@ import ConfirmationPage from "./components/ConfirmationPage";
 import MovieInfo from "./components/MovieInfo";
 import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage";
+import AccountPage from "./components/AccountPage";
 
 function App() {
   //return <DateSelection></DateSelection>;
@@ -24,6 +25,7 @@ function App() {
   //return <CreditCardPage></CreditCardPage>;
   //return <ConfirmationPage></ConfirmationPage>;
   //return <LoginPage></LoginPage>;
+  //return <AccountPage></AccountPage>;
 
   return (
     <div>
@@ -39,6 +41,7 @@ function App() {
         <Route path="/credit-card" element={<CreditCardPage />} />
         <Route path="/profile" element={<LoginPage />} />
         <Route path="/confirmation-page" element={<ConfirmationPage />} />
+        <Route path="/profile-info" element={<AccountPage />} />
       </Routes>
     </div>
   );
