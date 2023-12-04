@@ -24,8 +24,7 @@ const PaymentPage = () => {
     const applyPromoCode = () => {
         if (promoCode === 'OFF$2') {
             setDiscount(2);
-            setPromoError('');
-            setShowModal(false);
+            setPromoError('Applied Successfully!');
         } else {
             if (!promoCode) {
                 setPromoError('Please enter a promo code.');
@@ -33,8 +32,8 @@ const PaymentPage = () => {
                 setPromoError('Invalid promo code. Please try again.');
             }
             setDiscount(0);
-            setShowModal(true);
         }
+        setShowModal(true);
         setInputError('');
     };
 
