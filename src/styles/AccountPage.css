@@ -52,19 +52,6 @@ body.account-page-background {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.info-container .btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-top: 10px;
-}
-
-.info-container .btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
-
 .account-info-container .order-history {
     margin-top: 40px;
 }
@@ -112,7 +99,7 @@ body.account-page-background {
 }
 
 .info-container .change-pic-text {
-    color: #007bff;
+    color: #ff5722;
     cursor: pointer;
 }
 
@@ -134,6 +121,10 @@ body.account-page-background {
     filter: invert(1);
 }
 
+.info-container .btn-primary {
+    margin-top: 10px;
+}
+
 .account-page .btn-primary {
     background-color: #ff5722;
     border: none;
@@ -145,10 +136,6 @@ body.account-page-background {
 
 .account-page .btn-primary:active {
     background-color: #ff5722;
-}
-
-.account-page .change-pic-text {
-    color: #ff5722;
 }
 
 .account-page .form-header {

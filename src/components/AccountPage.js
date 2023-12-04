@@ -269,10 +269,10 @@ const AccountPage = () => {
                         </tbody>
                     </table>
                 </div>
+                <button className="btn btn-secondary back-button-account" onClick={() => navigate(-1)}>
+                    Back
+                </button>
             </div>
-            <button className="btn btn-secondary back-button-account" onClick={() => navigate(-1)}>
-                Back
-            </button>
         </div>
     );
 };

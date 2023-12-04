@@ -37,7 +37,7 @@ export const AppProvider = ({ children }) => {
   const [validUsername, setValidUsername] = useState("abc@gmail.com");
   const [validPassword, setValidPassword] = useState("@Abcd1234");
   const [profilePicture, setProfilePicture] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png");
-  const [loginStatus, setLoginStatus] = useState("true");
+  const [loginStatus, setLoginStatus] = useState("false");
 
   // Add other shared states if needed
 
