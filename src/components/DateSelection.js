@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
 
 const DateSelection = () => {
-  const { setDate, setTime } = useAppContext();
+  const { setDate, setTime, title } = useAppContext();
   const navigate = useNavigate();
 
   const [startDate, setStartDate] = useState(new Date());
@@ -25,17 +25,6 @@ const DateSelection = () => {
   const handleBack = () => {
     navigate(-1);
   };
-
-  useEffect(() => {
-    const greyedOutShowtimes = Array.from({ length: 2 }, () =>
-      Math.floor(Math.random() * showtimes.length)
-    );
-    const updatedShowtimes = showtimes.map((st, index) => ({
-      ...st,
-      disabled: greyedOutShowtimes.includes(index),
-    }));
-    setShowtimes(updatedShowtimes);
-  }, [startDate]);
 
   const handleShowtimeSelect = (time, disabled) => {
     if (!disabled) {
@@ -58,8 +47,8 @@ const DateSelection = () => {
   }, []);
 
   return (
-    <div className="date-selection">
-      <h1>🎥 Selected Movie: Indie Movie</h1>
+    <div className="date-selection-main">
+      <h1>🎥 Selected Movie: {title}</h1>
       <p>
         <i>Click on the date selector box to change the showtime date.</i>
       </p>

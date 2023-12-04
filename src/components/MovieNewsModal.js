@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../styles/MovieNewsModal.css";
-import { useAppContext } from '../AppContext';
+import { useAppContext } from "../AppContext";
 
 const MovieNewsModal = ({ onClose }) => {
-    const { newsImage, newsDescription, newsTitle } = useAppContext();
-  
+  const { newsImage, newsDescription, newsTitle } = useAppContext();
+
   return (
     <div className="i-modal-overlay" onClick={onClose}>
       <div className="i-modal-content" onClick={(e) => e.stopPropagation()}>
@@ -14,10 +14,7 @@ const MovieNewsModal = ({ onClose }) => {
         </button>
 
         <p className="movie-news-title-modal">{newsTitle}</p>
-        <img
-        className="movie-news-image-modal"
-        src={newsImage}
-      />
+        <img className="movie-news-image-modal" src={newsImage} />
         <p className="movie-news-description-modal">{newsDescription}</p>
       </div>
     </div>
