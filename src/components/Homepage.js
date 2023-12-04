@@ -25,6 +25,7 @@ const HomePage = () => {
     setNewsImage,
     setNewsTitle,
     setNewsDescription,
+    setMoreInfo,
   } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -390,6 +391,7 @@ const HomePage = () => {
                 setDescription(movie.description);
                 setTrailer(movie.trailer);
                 setReview(movie.reviews);
+                setMoreInfo(movie.otherInfo);
                 navigate("/movie-info");
               }}
             >
