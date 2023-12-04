@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import movieCard1 from "../assets/Movie1.jpg";
 import movieCard2 from "../assets/Movie2.jpeg";
 import movieCard3 from "../assets/Movie3.jpg";
-import movieCard4 from "../assets/Movie4.jpg";
+import movieCard4 from "../assets/Movie4.jpeg";
 import movieCard5 from "../assets/Movie5.png";
 import theatre from "../assets/theatre.jpeg";
 import { TypeAnimation } from "react-type-animation";
@@ -41,10 +41,10 @@ const HomePage = () => {
   const featuredMovies = [
     {
       img: movieCard1,
-      title: "Indie Greg Heffley",
-      otherInfo: "Length: 2h 37min || Age-Rating: PG-13",
-      trailer: "https://www.youtube.com/embed/example-trailer",
-      description: "A brief description of the movie.",
+      title: "At Eternity's Gate",
+      otherInfo: "Length: 1h 51m || Age-Rating: PG-13",
+      trailer: "https://www.youtube.com/embed/RYjBXyJu-ME",
+      description: "Starring Willem Dafoe, At Eternity's Gate invites viewers inside the life of the iconic painter Vincent van Gogh, brought to life by the undeniably talented actor, as he spends his last years in Arles, France, creating masterpieces of the natural environment around him.",
       reviews: [
         {
           id: 2,
@@ -80,10 +80,10 @@ const HomePage = () => {
     },
     {
       img: movieCard2,
-      title: "Despicable Indie",
-      otherInfo: "Length: 1h 45min / Age-Rating: PG-13",
-      trailer: "",
-      description: "",
+      title: "Lars and the Real Girl",
+      otherInfo: "Length: 1h 46min / Age-Rating: PG-13",
+      trailer: "https://www.youtube.com/embed/XNcs9DrKYRU",
+      description: "Before his Barbie and Blade Runner 2049 days, Ryan Gosling graced audiences with a treasured romantic comedy following the introverted Lars, a young man who struggles to fit in and socialize. When he announces that he has a new girlfriend, his brother (Paul Schneider) and sister-in-law (Emily Mortimer) are overjoyed — that is until they realize that the love of Lars' life is actually a life-size plastic woman.",
       reviews: [
         {
           id: 1,
@@ -125,10 +125,10 @@ const HomePage = () => {
     },
     {
       img: movieCard3,
-      title: "Indieana Jones",
-      otherInfo: "Length: 3h 45min / Age-Rating: R",
-      trailer: "",
-      description: "",
+      title: "The Lobster",
+      otherInfo: "Length: 1h 59m / Age-Rating: R",
+      trailer: "https://www.youtube.com/embed/vU29VfayDMw",
+      description: "In a dystopian near future, according to the laws of The City, single people are taken to The Hotel, where they are obliged to find a romantic partner in 45 days or they're transformed into beasts and sent off into The Woods.",
       reviews: [
         {
           id: 1,
@@ -170,10 +170,10 @@ const HomePage = () => {
     },
     {
       img: movieCard4,
-      title: "Wolf of Indie Street",
-      otherInfo: "Length: 2h 10min / Age-Rating: PG",
-      trailer: "",
-      description: "",
+      title: "Me and Earl and the Dying Girl",
+      otherInfo: "Length: 1h 45m / Age-Rating: PG-13",
+      trailer: "https://www.youtube.com/embed/2qfmAllbYC8",
+      description: "High schooler Greg, who spends most of his time making parodies of classic movies with his co-worker Earl, finds his outlook forever altered after befriending a classmate who has just been diagnosed with cancer.",
       reviews: [
         {
           id: 1,
@@ -215,10 +215,10 @@ const HomePage = () => {
     },
     {
       img: movieCard5,
-      title: "Indie Movie",
-      otherInfo: "Length: 1h 45min / Age-Rating: PG",
-      trailer: "",
-      description: "",
+      title: "Never Rarely Sometimes Always",
+      otherInfo: "Length: 1h 41min / Age-Rating: PG-13",
+      trailer: "https://www.youtube.com/embed/hjw_QTKr2rc",
+      description: "A pair of teenage girls in rural Pennsylvania travel to New York City to seek out medical help after an unintended pregnancy.",
       reviews: [
         {
           id: 1,
