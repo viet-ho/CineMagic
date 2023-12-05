@@ -471,6 +471,11 @@ const HomePage = () => {
       </section>
 
       {isPopupOpen && <ConfirmationPopupModal onClose={handleClosePopup} />}
+
+      <footer className="footer">
+        <p>&copy; 2023 CineMagic. All rights reserved.</p>
+      </footer>
+
       <ReactModal
         className="popup"
         isOpen={isOpen}
