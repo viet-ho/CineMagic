@@ -27,10 +27,16 @@ const LoginPage = () => {
   const {
     validUsername,
     validPassword,
+    tempPhone,
+    tempPaymentMethod,
     setValidUsername,
     setValidPassword,
     setLoginStatus,
     setEmail,
+    setPhoneNumber,
+    setSelectedPaymentMethod,
+    setAccountName,
+    setProfilePicture,
   } = useAppContext();
 
   const validateCredentials = () => {
@@ -75,6 +81,8 @@ const LoginPage = () => {
     }
 
     setEmail(username);
+    setPhoneNumber(tempPhone);
+    setSelectedPaymentMethod(tempPaymentMethod);
 
     setLoginButtonText("Success...");
     setTimeout(() => {
@@ -90,6 +98,8 @@ const LoginPage = () => {
     setValidUsername(username);
     setValidPassword(password);
     setEmail(username);
+    setAccountName("");
+    setProfilePicture("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png");
 
     setSignUpButtonText("Success...");
     setTimeout(() => {

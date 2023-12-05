@@ -8,9 +8,12 @@ import "../styles/Navbar.css";
 
 const Navbar = () => {
 
-  const { loginStatus, setLoginStatus, setEmail, setPhoneNumber, setSelectedPaymentMethod } = useAppContext();
+  const { loginStatus, email, phoneNumber, selectedPaymentMethod, setLoginStatus, setEmail, setPhoneNumber, setSelectedPaymentMethod, setTempEmail, setTempPhone, setTempPaymentMethod } = useAppContext();
 
   const handleLogout = () => {
+    setTempEmail(email);
+    setTempPhone(phoneNumber);
+    setTempPaymentMethod(selectedPaymentMethod);
     setLoginStatus("false");
     setEmail("");
     setPhoneNumber("");

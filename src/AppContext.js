@@ -42,6 +42,9 @@ export const AppProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState("false");
   const [orderNumber, setOrderNumber] = useState(0);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [tempEmail, setTempEmail] = useState("");
+  const [tempPhone, setTempPhone] = useState("");
+  const [tempPaymentMethod, setTempPaymentMethod] = useState("");
 
   // Add other shared states if needed
 
@@ -123,6 +126,12 @@ export const AppProvider = ({ children }) => {
         setOrderNumber,
         showConfirm,
         setShowConfirm,
+        tempEmail,
+        setTempEmail,
+        tempPhone,
+        setTempPhone,
+        tempPaymentMethod,
+        setTempPaymentMethod,
         // Provide other states here
       }}
     >
