@@ -19,7 +19,7 @@ const DateSelection = () => {
   const [isConfirmDisabled, setConfirmDisabled] = useState(true);
   const [showtimes, setShowtimes] = useState([
     { time: "10:00AM", disabled: false },
-    { time: "2:00PM", disabled: false },
+    { time: "2:00PM", disabled: true },
     { time: "3:30PM", disabled: false },
     { time: "6:00PM", disabled: false },
     { time: "10:00PM", disabled: false },
