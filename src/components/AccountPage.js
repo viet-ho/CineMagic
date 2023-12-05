@@ -23,10 +23,7 @@ const AccountPage = () => {
     setProfilePicture,
     validPassword,
     setValidPassword,
-    title,
-    date,
-    total,
-    orderNumber,
+    orderHistory
   } = useAppContext();
 
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -43,7 +40,6 @@ const AccountPage = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [updateButtonText, setUpdateButtonText] =
     useState("Update Information");
-  const [orderHistory, setOrderHistory] = useState([]);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
@@ -265,19 +261,6 @@ const AccountPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (orderNumber && title && date instanceof Date && total) {
-      setOrderHistory([
-        {
-          orderNumber: orderNumber,
-          date: date.toDateString(),
-          movie: title,
-          totalAmount: total,
-        },
-      ]);
-    }
-  }, [title, date, total]);
-
   return (
     <div className="account-page">
       <div className="account-info-container">
@@ -371,6 +354,7 @@ const AccountPage = () => {
               <tr>
                 <th>Order Number</th>
                 <th>Date</th>
+                <th>Time</th>
                 <th>Movie</th>
                 <th>Total Amount</th>
               </tr>
@@ -379,9 +363,10 @@ const AccountPage = () => {
               {orderHistory.map((order, index) => (
                 <tr key={index}>
                   <td>#{order.orderNumber}</td>
-                  <td>{order.date}</td>
-                  <td>{order.movie}</td>
-                  <td>${order.totalAmount}</td>
+                  <td>{order.date.toDateString()}</td>
+                  <td>{order.time}</td>
+                  <td>{order.title}</td>
+                  <td>${order.total}</td>
                 </tr>
               ))}
             </tbody>

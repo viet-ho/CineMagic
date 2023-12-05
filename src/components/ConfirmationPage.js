@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import "../styles/ConfirmationPage.css";
 
-const SummaryPage = () => {
+const ConfirmationPage = () => {
   const {
     title,
     date,
@@ -27,6 +27,12 @@ const SummaryPage = () => {
     specialAssistance,
     setShowConfirm,
     setOrderNumber,
+    addToOrderHistory,
+    resetStates,
+    loginStatus,
+    setEmail,
+    setPhoneNumber,
+    setSelectedPaymentMethod,
   } = useAppContext();
 
   const navigate = useNavigate();
@@ -44,15 +50,12 @@ const SummaryPage = () => {
   const seniorTicketPrice = 10;
 
   const ticketDetails = {
-    adultTickets: `${adultCount} ($${adultTicketPrice} x ${adultCount} = $${
-      adultCount * adultTicketPrice
-    })`,
-    youthTickets: `${childCount} ($${youthTicketPrice} x ${childCount} = $${
-      childCount * youthTicketPrice
-    })`,
-    seniorTickets: `${seniorCount} ($${seniorTicketPrice} x ${seniorCount} = $${
-      seniorCount * seniorTicketPrice
-    })`,
+    adultTickets: `${adultCount} ($${adultTicketPrice} x ${adultCount} = $${adultCount * adultTicketPrice
+      })`,
+    youthTickets: `${childCount} ($${youthTicketPrice} x ${childCount} = $${childCount * youthTicketPrice
+      })`,
+    seniorTickets: `${seniorCount} ($${seniorTicketPrice} x ${seniorCount} = $${seniorCount * seniorTicketPrice
+      })`,
     seatNumber: seatIDs
       .map((seatID) => {
         if (seatID === "S5" || seatID === "S6") {
@@ -97,8 +100,18 @@ const SummaryPage = () => {
     return orderNumber;
   };
 
-  const handleGenerateOrderNumber = () => {
-    setOrderNumber(generateOrderNumber());
+  const handleConfirmButton = () => {
+    const newOrderNumber = generateOrderNumber();
+    setOrderNumber(newOrderNumber);
+    addToOrderHistory(newOrderNumber);
+    resetStates();
+    if (loginStatus === "false") {
+      setEmail("");
+      setPhoneNumber("");
+      setSelectedPaymentMethod("");
+    }
+    navigate("/");
+    setShowConfirm(true);
   };
 
   return (
@@ -184,11 +197,7 @@ const SummaryPage = () => {
               variant="primary"
               size="lg"
               className="complete-button"
-              onClick={() => {
-                navigate("/");
-                setShowConfirm(true);
-                handleGenerateOrderNumber();
-              }}
+              onClick={handleConfirmButton}
             >
               Complete Order
             </Button>
@@ -206,4 +215,4 @@ const SummaryPage = () => {
   );
 };
 
-export default SummaryPage;
+export default ConfirmationPage;

@@ -6,10 +6,14 @@ import { useAppContext } from "../AppContext";
 import Modal from "../components/Modal.js";
 
 const ConfirmationPopupModal = ({ onClose }) => {
-  const { orderNumber, title, total, date, time } = useAppContext();
+  const { orderHistory } = useAppContext();
 
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+
+  const mostRecentOrder = orderHistory[orderHistory.length - 1] || {};
+
+  const { title, total, date, time, orderNumber } = mostRecentOrder;
 
   const handleDownloadButton = () => {
     setModalMessage("Downloaded ticket successfully!");

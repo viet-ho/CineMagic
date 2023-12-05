@@ -40,13 +40,43 @@ export const AppProvider = ({ children }) => {
     "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png"
   );
   const [loginStatus, setLoginStatus] = useState("false");
-  const [orderNumber, setOrderNumber] = useState(0);
+  const [orderNumber, setOrderNumber] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
   const [tempEmail, setTempEmail] = useState("");
   const [tempPhone, setTempPhone] = useState("");
   const [tempPaymentMethod, setTempPaymentMethod] = useState("");
 
-  // Add other shared states if needed
+  const [orderHistory, setOrderHistory] = useState([]);
+
+const addToOrderHistory = (newOrderNumber) => {
+  const currentOrder = {
+    title,
+    date,
+    time,
+    total,
+    orderNumber: newOrderNumber,
+  };
+  setOrderHistory([...orderHistory, currentOrder]);
+};
+
+const resetStates = () => {
+  setTitle("");
+  setDate("");
+  setTime("");
+  setAdultCount(0);
+  setChildCount(0);
+  setSeniorCount(0);
+  setTotalTickets(0);
+  setSpecialAssistance("");
+  setSeatIDs([]);
+  setPromoCode("");
+  setDiscount(0);
+  setSubtotal(0);
+  setTotal(0);
+  setTax(0);
+  setImage("");
+};
+
 
   const calculateTax = (subtotal, discount) => 0.05 * (subtotal - discount);
 
@@ -132,6 +162,9 @@ export const AppProvider = ({ children }) => {
         setTempPhone,
         tempPaymentMethod,
         setTempPaymentMethod,
+        orderHistory,
+        addToOrderHistory,
+        resetStates,
         // Provide other states here
       }}
     >
