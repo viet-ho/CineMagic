@@ -2,12 +2,16 @@ import React from "react";
 import "../styles/Modal.css";
 
 const Modal = ({ showModal, toggleModal, message }) => {
+  const handleModalClick = (e) => {
+    e.stopPropagation();
+  };
+
   if (!showModal) {
     return null;
   }
 
   return (
-    <div className="v-modal-overlay">
+    <div className="v-modal-overlay" onClick={handleModalClick}>
       <div className="v-modal-content">
         <div className="v-modal-header">
           <span className="v-modal-title">Attention</span>

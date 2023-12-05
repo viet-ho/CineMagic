@@ -35,7 +35,7 @@ const HomePage = () => {
   } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
 
-  const [isPopupOpen, setIsPopupOpen] = useState({ showConfirm });
+  const [isPopupOpen, setIsPopupOpen] = useState(showConfirm);
 
   const [showNews, setShowNews] = useState(false);
 

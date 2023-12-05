@@ -110,7 +110,7 @@ const AccountPage = () => {
     setEmail(tempEmail);
     setPhoneNumber(tempPhoneNumber);
 
-    setModalMessage("Update successfully!");
+    setModalMessage("Updated successfully!");
     setShowModal(true);
   };
 
