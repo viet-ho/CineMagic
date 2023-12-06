@@ -167,7 +167,6 @@ function TicketBookingPage() {
           </Button>
         </div>
       </div>
-      \{" "}
     </div>
   );
 }
